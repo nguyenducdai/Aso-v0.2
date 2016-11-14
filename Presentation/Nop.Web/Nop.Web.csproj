@@ -259,7 +259,6 @@
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\DownloadController.cs" />
-    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -992,6 +991,7 @@
     <Content Include="Views\Product\CustomerProductReviews.cshtml" />
     <Content Include="Views\Vendor\Info.cshtml" />
     <Content Include="Views\Common\Logo.cshtml" />
+    <Content Include="Views\Common\Page.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\bin\" />
@@ -1104,7 +1104,6 @@
     <Content Include="Views\Newsletter\SubscriptionActivation.cshtml" />
     <Content Include="Views\Customer\AccountActivation.cshtml" />
     <Content Include="Views\Common\ContactUs.cshtml" />
-    <Content Include="Views\Common\CurrencySelector.cshtml" />
     <Content Include="Views\Common\HeaderLinks.cshtml" />
     <Content Include="Views\Common\LanguageSelector.cshtml" />
     <Content Include="Views\Catalog\TopMenu.cshtml" />

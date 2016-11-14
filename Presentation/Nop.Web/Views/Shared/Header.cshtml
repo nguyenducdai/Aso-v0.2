@@ -2,13 +2,12 @@
     @Html.Widget("header")
     <div class="header-upper">
         <div class="header-selectors-wrapper">
-          @*  @Html.Action("TaxTypeSelector", "Common")*@
             @Html.Action("LanguageSelector", "Common")
             @Html.Widget("header_selectors")
         </div>
         <div class="header-links-wrapper">
             @Html.Action("HeaderLinks", "Common")
-            @Html.Action("FlyoutShoppingCart", "ShoppingCart")
+            @Html.Action("Page", "Common")
         </div>
     </div>
     <div class="header-lower">
