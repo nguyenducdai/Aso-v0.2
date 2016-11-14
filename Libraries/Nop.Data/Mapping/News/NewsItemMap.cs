@@ -9,7 +9,7 @@ namespace Nop.Data.Mapping.News
             this.ToTable("News");
             this.HasKey(ni => ni.Id);
             this.Property(ni => ni.Title).IsRequired();
-            this.Property(ni => ni.Image).IsRequired();
+           // this.Property(ni => ni.Image).IsRequired();
             this.Property(ni => ni.Short).IsRequired();
             this.Property(ni => ni.Full).IsRequired();
             this.Property(ni => ni.MetaKeywords).HasMaxLength(400);
