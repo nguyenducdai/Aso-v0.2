@@ -4988,6 +4988,19 @@ pre {
 }
 
 
+/*custom style*/
+.list-top-menu{
+    list-style:none;
+}
+ul.list-top-menu li{
+    display:inline-block;
+    line-height:40px;
+    padding: 0 10px;
+}
+ul.list-top-menu li a,ul.list-top-menu li a:hover{
+   text-decoration: none;
+}
+
 
 
 
@@ -6697,6 +6710,15 @@ pre {
 }
 
 
+@media all and (min-width: 1200px){
+    .master-wrapper-content,.header,.footer-lower,.footer-upper {
+	    width: 1170px;
+	    margin: auto;
+    }
+    .header-menu{
+        width: 1170px;
+    }
+}
 
 
 

@@ -231,6 +231,53 @@ namespace Nop.Web.Controllers
             return PartialView(model);
         }
 
+        // page
+        [ChildActionOnly]
+        public ActionResult Page()
+        {
+            //footer topics
+            string topicCacheKey = string.Format(ModelCacheEventConsumer.TOPIC_FOOTER_MODEL_KEY,
+                _workContext.WorkingLanguage.Id,
+                _storeContext.CurrentStore.Id,
+                string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()));
+            var cachedTopicModel = _cacheManager.Get(topicCacheKey, () =>
+                _topicService.GetAllTopics(_storeContext.CurrentStore.Id)
+                .Where(t => t.IncludeInFooterColumn1 || t.IncludeInFooterColumn2 || t.IncludeInFooterColumn3)
+                .Select(t => new FooterModel.FooterTopicModel
+                {
+                    Id = t.Id,
+                    Name = t.GetLocalized(x => x.Title),
+                    SeName = t.GetSeName(),
+                    IncludeInFooterColumn1 = t.IncludeInFooterColumn1,
+                    IncludeInFooterColumn2 = t.IncludeInFooterColumn2,
+                    IncludeInFooterColumn3 = t.IncludeInFooterColumn3
+                })
+                .ToList()
+            );
+
+            //model
+            var model = new FooterModel
+            {
+                StoreName = _storeContext.CurrentStore.GetLocalized(x => x.Name),
+                WishlistEnabled = _permissionService.Authorize(StandardPermissionProvider.EnableWishlist),
+                ShoppingCartEnabled = _permissionService.Authorize(StandardPermissionProvider.EnableShoppingCart),
+                SitemapEnabled = _commonSettings.SitemapEnabled,
+                WorkingLanguageId = _workContext.WorkingLanguage.Id,
+                BlogEnabled = _blogSettings.Enabled,
+                CompareProductsEnabled = _catalogSettings.CompareProductsEnabled,
+                ForumEnabled = _forumSettings.ForumsEnabled,
+                NewsEnabled = _newsSettings.Enabled,
+                RecentlyViewedProductsEnabled = _catalogSettings.RecentlyViewedProductsEnabled,
+                NewProductsEnabled = _catalogSettings.NewProductsEnabled,
+                DisplayTaxShippingInfoFooter = _catalogSettings.DisplayTaxShippingInfoFooter,
+                HidePoweredByNopCommerce = _storeInformationSettings.HidePoweredByNopCommerce,
+                AllowCustomersToApplyForVendorAccount = _vendorSettings.AllowCustomersToApplyForVendorAccount,
+                Topics = cachedTopicModel
+            };
+
+            return PartialView(model);
+        }
+
         //language
         [ChildActionOnly]
         public ActionResult LanguageSelector()
@@ -294,65 +341,6 @@ namespace Nop.Web.Controllers
             }
             return Redirect(returnUrl);
         }
-
-        ////currency
-        //[ChildActionOnly]
-        //public ActionResult CurrencySelector()
-        //{
-        //    var availableCurrencies = _cacheManager.Get(string.Format(ModelCacheEventConsumer.AVAILABLE_CURRENCIES_MODEL_KEY, _workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id), () =>
-        //    {
-        //        var result = _currencyService
-        //            .GetAllCurrencies(storeId: _storeContext.CurrentStore.Id)
-        //            .Select(x =>
-        //            {
-        //                //currency char
-        //                var currencySymbol = "";
-        //                if (!string.IsNullOrEmpty(x.DisplayLocale))
-        //                    currencySymbol = new RegionInfo(x.DisplayLocale).CurrencySymbol;
-        //                else
-        //                    currencySymbol = x.CurrencyCode;
-        //                //model
-        //                var currencyModel = new CurrencyModel
-        //                {
-        //                    Id = x.Id,
-        //                    Name = x.GetLocalized(y => y.Name),
-        //                    CurrencySymbol = currencySymbol
-        //                };
-        //                return currencyModel;
-        //            })
-        //            .ToList();
-        //        return result;
-        //    });
-
-        //    var model = new CurrencySelectorModel
-        //    {
-        //        CurrentCurrencyId = _workContext.WorkingCurrency.Id,
-        //        AvailableCurrencies = availableCurrencies
-        //    };
-
-        //    if (model.AvailableCurrencies.Count == 1)
-        //        Content("");
-
-        //    return PartialView(model);
-        //}
-        ////available even when navigation is not allowed
-        //[PublicStoreAllowNavigation(true)]
-        //public ActionResult SetCurrency(int customerCurrency, string returnUrl = "")
-        //{
-        //    var currency = _currencyService.GetCurrencyById(customerCurrency);
-        //    if (currency != null)
-        //        _workContext.WorkingCurrency = currency;
-
-        //    //home page
-        //    if (String.IsNullOrEmpty(returnUrl))
-        //        returnUrl = Url.RouteUrl("HomePage");
-
-        //    //prevent open redirection attack
-        //    if (!Url.IsLocalUrl(returnUrl))
-        //        returnUrl = Url.RouteUrl("HomePage");
-
-        //    return Redirect(returnUrl);
-        //}
 
         //tax type
         [ChildActionOnly]
