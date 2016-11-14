@@ -473,47 +473,7 @@ namespace Nop.Web.Controllers
         [ChildActionOnly]
         public ActionResult Footer()
         {
-            //footer topics
-            string topicCacheKey = string.Format(ModelCacheEventConsumer.TOPIC_FOOTER_MODEL_KEY,
-                _workContext.WorkingLanguage.Id,
-                _storeContext.CurrentStore.Id,
-                string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()));
-            var cachedTopicModel = _cacheManager.Get(topicCacheKey, () =>
-                _topicService.GetAllTopics(_storeContext.CurrentStore.Id)
-                .Where(t => t.IncludeInFooterColumn1 || t.IncludeInFooterColumn2 || t.IncludeInFooterColumn3)
-                .Select(t => new FooterModel.FooterTopicModel
-                {
-                    Id = t.Id,
-                    Name = t.GetLocalized(x => x.Title),
-                    SeName = t.GetSeName(),
-                    IncludeInFooterColumn1 = t.IncludeInFooterColumn1,
-                    IncludeInFooterColumn2 = t.IncludeInFooterColumn2,
-                    IncludeInFooterColumn3 = t.IncludeInFooterColumn3
-                })
-                .ToList()
-            );
-
-            //model
-            var model = new FooterModel
-            {
-                StoreName = _storeContext.CurrentStore.GetLocalized(x => x.Name),
-                WishlistEnabled = _permissionService.Authorize(StandardPermissionProvider.EnableWishlist),
-                ShoppingCartEnabled = _permissionService.Authorize(StandardPermissionProvider.EnableShoppingCart),
-                SitemapEnabled = _commonSettings.SitemapEnabled,
-                WorkingLanguageId = _workContext.WorkingLanguage.Id,
-                BlogEnabled = _blogSettings.Enabled,
-                CompareProductsEnabled = _catalogSettings.CompareProductsEnabled,
-                ForumEnabled = _forumSettings.ForumsEnabled,
-                NewsEnabled = _newsSettings.Enabled,
-                RecentlyViewedProductsEnabled = _catalogSettings.RecentlyViewedProductsEnabled,
-                NewProductsEnabled = _catalogSettings.NewProductsEnabled,
-                DisplayTaxShippingInfoFooter = _catalogSettings.DisplayTaxShippingInfoFooter,
-                HidePoweredByNopCommerce = _storeInformationSettings.HidePoweredByNopCommerce,
-                AllowCustomersToApplyForVendorAccount = _vendorSettings.AllowCustomersToApplyForVendorAccount,
-                Topics = cachedTopicModel
-            };
-
-            return PartialView(model);
+            return PartialView();
         }
 
 

@@ -23,6 +23,8 @@ namespace Nop.Core.Domain.News
         /// </summary>
         public string Title { get; set; }
 
+        public string Image { get; set; }
+
         /// <summary>
         /// Gets or sets the short text
         /// </summary>

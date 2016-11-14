@@ -2302,16 +2302,16 @@
     <Content Include="Views\Setting\StoreScopeConfiguration.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Vendor\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\Widget\Vendor\_CreateOrUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Vendor\Create.cshtml" />
+    <Content Include="Views\Widget\Vendor\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Vendor\Edit.cshtml" />
+    <Content Include="Views\Widget\Vendor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Vendor\List.cshtml" />
+    <Content Include="Views\Widget\Vendor\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Order\_OrderDetails.Notes.cshtml" />
