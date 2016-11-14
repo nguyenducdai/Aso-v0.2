@@ -295,64 +295,64 @@ namespace Nop.Web.Controllers
             return Redirect(returnUrl);
         }
 
-        //currency
-        [ChildActionOnly]
-        public ActionResult CurrencySelector()
-        {
-            var availableCurrencies = _cacheManager.Get(string.Format(ModelCacheEventConsumer.AVAILABLE_CURRENCIES_MODEL_KEY, _workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id), () =>
-            {
-                var result = _currencyService
-                    .GetAllCurrencies(storeId: _storeContext.CurrentStore.Id)
-                    .Select(x =>
-                    {
-                        //currency char
-                        var currencySymbol = "";
-                        if (!string.IsNullOrEmpty(x.DisplayLocale))
-                            currencySymbol = new RegionInfo(x.DisplayLocale).CurrencySymbol;
-                        else
-                            currencySymbol = x.CurrencyCode;
-                        //model
-                        var currencyModel = new CurrencyModel
-                        {
-                            Id = x.Id,
-                            Name = x.GetLocalized(y => y.Name),
-                            CurrencySymbol = currencySymbol
-                        };
-                        return currencyModel;
-                    })
-                    .ToList();
-                return result;
-            });
+        ////currency
+        //[ChildActionOnly]
+        //public ActionResult CurrencySelector()
+        //{
+        //    var availableCurrencies = _cacheManager.Get(string.Format(ModelCacheEventConsumer.AVAILABLE_CURRENCIES_MODEL_KEY, _workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id), () =>
+        //    {
+        //        var result = _currencyService
+        //            .GetAllCurrencies(storeId: _storeContext.CurrentStore.Id)
+        //            .Select(x =>
+        //            {
+        //                //currency char
+        //                var currencySymbol = "";
+        //                if (!string.IsNullOrEmpty(x.DisplayLocale))
+        //                    currencySymbol = new RegionInfo(x.DisplayLocale).CurrencySymbol;
+        //                else
+        //                    currencySymbol = x.CurrencyCode;
+        //                //model
+        //                var currencyModel = new CurrencyModel
+        //                {
+        //                    Id = x.Id,
+        //                    Name = x.GetLocalized(y => y.Name),
+        //                    CurrencySymbol = currencySymbol
+        //                };
+        //                return currencyModel;
+        //            })
+        //            .ToList();
+        //        return result;
+        //    });
 
-            var model = new CurrencySelectorModel
-            {
-                CurrentCurrencyId = _workContext.WorkingCurrency.Id,
-                AvailableCurrencies = availableCurrencies
-            };
+        //    var model = new CurrencySelectorModel
+        //    {
+        //        CurrentCurrencyId = _workContext.WorkingCurrency.Id,
+        //        AvailableCurrencies = availableCurrencies
+        //    };
 
-            if (model.AvailableCurrencies.Count == 1)
-                Content("");
+        //    if (model.AvailableCurrencies.Count == 1)
+        //        Content("");
 
-            return PartialView(model);
-        }
-        //available even when navigation is not allowed
-        [PublicStoreAllowNavigation(true)]
-        public ActionResult SetCurrency(int customerCurrency, string returnUrl = "")
-        {
-            var currency = _currencyService.GetCurrencyById(customerCurrency);
-            if (currency != null)
-                _workContext.WorkingCurrency = currency;
+        //    return PartialView(model);
+        //}
+        ////available even when navigation is not allowed
+        //[PublicStoreAllowNavigation(true)]
+        //public ActionResult SetCurrency(int customerCurrency, string returnUrl = "")
+        //{
+        //    var currency = _currencyService.GetCurrencyById(customerCurrency);
+        //    if (currency != null)
+        //        _workContext.WorkingCurrency = currency;
 
-            //home page
-            if (String.IsNullOrEmpty(returnUrl))
-                returnUrl = Url.RouteUrl("HomePage");
+        //    //home page
+        //    if (String.IsNullOrEmpty(returnUrl))
+        //        returnUrl = Url.RouteUrl("HomePage");
 
-            //prevent open redirection attack
-            if (!Url.IsLocalUrl(returnUrl))
-                returnUrl = Url.RouteUrl("HomePage");
+        //    //prevent open redirection attack
+        //    if (!Url.IsLocalUrl(returnUrl))
+        //        returnUrl = Url.RouteUrl("HomePage");
 
-            return Redirect(returnUrl);
-        }
+        //    return Redirect(returnUrl);
+        //}
 
         //tax type
         [ChildActionOnly]
