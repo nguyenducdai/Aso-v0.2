@@ -6866,6 +6866,8 @@ ul.list-top-menu li a,ul.list-top-menu li a:hover{
     border-radius: 5px;
     background: #FFF;
 }
+
+.active {display:block !important}
 .col-item .photo img
 {
     margin: 0 auto;

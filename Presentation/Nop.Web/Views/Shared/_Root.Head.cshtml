@@ -58,7 +58,30 @@
     @Html.NopCssFiles(this.Url, ResourceLocation.Foot)
     @Html.NopScripts(this.Url, ResourceLocation.Foot)
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="~/Themes/DefaultClean/Content/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <link href="~/Themes/DefaultClean/Content/css/owl.carousel.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 5,
+                    nav: true,
+                    loop: false
+                }
+            }
+        })
+    </script>
 </body>
 </html>
