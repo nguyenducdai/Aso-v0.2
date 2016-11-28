@@ -46,10 +46,10 @@
     {
         @RenderCategoryLine(category, 0, false)
     }
-    @foreach (var topic in Model.Topics)
+    @*@foreach (var topic in Model.Topics)
     {
         <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
-    }
+    }*@
     @*@if (rootCategories.Count == 0 && Model.Topics.Count == 0)
     {
         
