@@ -43,6 +43,7 @@
 }
 .theme-custom .nivo-controlNav a.active {
 	background-color: #4ab2f1;
+    display: inline-block;
 }
 
 /* DIRECTIONAL NAVIGATION */

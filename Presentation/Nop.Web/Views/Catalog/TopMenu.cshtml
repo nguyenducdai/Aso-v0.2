@@ -1,4 +1,5 @@
 ﻿@model TopMenuModel
+
 @using Nop.Web.Models.Catalog;
 
 @helper RenderCategoryLine(CategorySimpleModel category, int level, bool responsiveMobileMenu)
@@ -7,7 +8,7 @@
         <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })">@category.Name
         @if (category.NumberOfProducts.HasValue)
         {
-            <text> </text>@T("Categories.TotalProducts", category.NumberOfProducts.Value)
+            <text> @T("Categories.TotalProducts", category.NumberOfProducts.Value)</text>
         }
         </a>
         @{
@@ -50,6 +51,20 @@
     {
         <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
     }
+    @*@if (Model.News.Count >= 0)
+    {
+        <li><a href="#">Tin Tức</a>
+            <div class="sublist-toggle"></div>
+            <ul class="sublist first-level">
+                @foreach (var news in Model.News)
+                {
+                    <li><a href="@Url.RouteUrl("News", new { SeName = news.SeName })">@news.Name</a></li>
+                }
+            </ul>
+        </li>
+        
+    }*@
+
     @*@if (rootCategories.Count == 0 && Model.Topics.Count == 0)
     {
         
