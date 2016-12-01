@@ -154,6 +154,11 @@ namespace Nop.Plugin.Teams.Aso.Controllers
             return RedirectToAction("Manage");
         }
 
+        public ActionResult Configure()
+        {
+            return View("~/Plugins/Teams.Aso/Views/Widgets/Configure.cshtml");
+        }
+
         public ActionResult HomeView()
         {
             return View("~/Plugins/Teams.Aso/Views/Widgets/FieldWork.cshtml");

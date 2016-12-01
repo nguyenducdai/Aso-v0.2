@@ -121,7 +121,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\HomeView\FieldWork.cshtml">
+    <Content Include="Views\Widgets\PublicInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Widgets\Configure.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
