@@ -243,8 +243,6 @@
     <Compile Include="ExportImport\ExportProductAttribute.cs" />
     <Compile Include="ExportImport\Help\PropertyByName.cs" />
     <Compile Include="ExportImport\Help\PropertyManager.cs" />
-    <Compile Include="FieldWord\FieldWorkService.cs" />
-    <Compile Include="FieldWord\IFieldWorkService.cs" />
     <Compile Include="Helpers\BrowscapXmlParser.cs" />
     <Compile Include="Infrastructure\AzureWebsitesMachineNameProvider.cs" />
     <Compile Include="Infrastructure\DefaultMachineNameProvider.cs" />
