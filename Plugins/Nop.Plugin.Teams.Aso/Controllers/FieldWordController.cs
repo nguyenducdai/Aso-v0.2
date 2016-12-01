@@ -156,7 +156,7 @@ namespace Nop.Plugin.Teams.Aso.Controllers
 
         public ActionResult HomeView()
         {
-            return View("~/Plugins/Teams.Aso/Views/HomeView/FieldWork.cshtml");
+            return View("~/Plugins/Teams.Aso/Views/Widgets/FieldWork.cshtml");
         }
 
        

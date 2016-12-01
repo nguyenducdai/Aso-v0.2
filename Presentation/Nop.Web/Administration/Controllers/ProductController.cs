@@ -204,6 +204,10 @@ namespace Nop.Admin.Controllers
                                                                localized.FullDescription,
                                                                localized.LanguageId);
                 _localizedEntityService.SaveLocalizedValue(product,
+                                                               x => x.Functions,
+                                                               localized.Functions,
+                                                               localized.LanguageId);
+                _localizedEntityService.SaveLocalizedValue(product,
                                                                x => x.MetaKeywords,
                                                                localized.MetaKeywords,
                                                                localized.LanguageId);
@@ -1024,6 +1028,8 @@ namespace Nop.Admin.Controllers
                 //"Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property. "
                 //also it improves performance
                 productModel.FullDescription = "";
+                productModel.Functions = "";
+                productModel.FieldWork = "";
 
                 //picture
                 var defaultProductPicture = _pictureService.GetPicturesByProductId(x.Id, 1).FirstOrDefault();
@@ -1192,11 +1198,16 @@ namespace Nop.Admin.Controllers
 
             var model = product.ToModel();
             PrepareProductModel(model, product, false, false);
+
+            model.Functions = product.Functions;
+            model.FieldWork = product.FieldWork;
+
             AddLocales(_languageService, model.Locales, (locale, languageId) =>
             {
                 locale.Name = product.GetLocalized(x => x.Name, languageId, false, false);
                 locale.ShortDescription = product.GetLocalized(x => x.ShortDescription, languageId, false, false);
                 locale.FullDescription = product.GetLocalized(x => x.FullDescription, languageId, false, false);
+                
                 locale.MetaKeywords = product.GetLocalized(x => x.MetaKeywords, languageId, false, false);
                 locale.MetaDescription = product.GetLocalized(x => x.MetaDescription, languageId, false, false);
                 locale.MetaTitle = product.GetLocalized(x => x.MetaTitle, languageId, false, false);
@@ -1259,6 +1270,9 @@ namespace Nop.Admin.Controllers
 
                 //product
                 product = model.ToEntity(product);
+
+                product.Functions = model.Functions;
+                product.FieldWork = model.FieldWork;
 
                 product.UpdatedOnUtc = DateTime.UtcNow;
                 _productService.UpdateProduct(product);

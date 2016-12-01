@@ -81,8 +81,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nop.Plugin.ExchangeRate.Ecb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nop.Plugin.Pickup.PickupInStore", "Plugins\Nop.Plugin.Pickup.PickupInStore\Nop.Plugin.Pickup.PickupInStore.csproj", "{06C88D0B-A276-4D3D-8BE5-7C58BF3072E3}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nop.Plugin.Teams.Aso", "Plugins\Nop.Plugin.Teams.Aso\Nop.Plugin.Teams.Aso.csproj", "{22697BC9-9BC9-48D9-A8F9-AB324B3E0599}"
 EndProject
+=======
+>>>>>>> 8fb87c2ace51d031dc959f272ea80d96659ca81e
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -447,6 +450,7 @@ Global
 		{06C88D0B-A276-4D3D-8BE5-7C58BF3072E3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{06C88D0B-A276-4D3D-8BE5-7C58BF3072E3}.Release|x86.ActiveCfg = Release|Any CPU
 		{06C88D0B-A276-4D3D-8BE5-7C58BF3072E3}.Release|x86.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{22697BC9-9BC9-48D9-A8F9-AB324B3E0599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22697BC9-9BC9-48D9-A8F9-AB324B3E0599}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22697BC9-9BC9-48D9-A8F9-AB324B3E0599}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -459,6 +463,8 @@ Global
 		{22697BC9-9BC9-48D9-A8F9-AB324B3E0599}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{22697BC9-9BC9-48D9-A8F9-AB324B3E0599}.Release|x86.ActiveCfg = Release|Any CPU
 		{22697BC9-9BC9-48D9-A8F9-AB324B3E0599}.Release|x86.Build.0 = Release|Any CPU
+=======
+>>>>>>> 8fb87c2ace51d031dc959f272ea80d96659ca81e
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -499,7 +505,10 @@ Global
 		{9978B382-0BCD-4621-B6B5-52E0E3B5F464} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 		{6DF00C56-EC49-4AB8-8B29-404E3694026C} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 		{06C88D0B-A276-4D3D-8BE5-7C58BF3072E3} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
+<<<<<<< HEAD
 		{22697BC9-9BC9-48D9-A8F9-AB324B3E0599} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
+=======
+>>>>>>> 8fb87c2ace51d031dc959f272ea80d96659ca81e
 	EndGlobalSection
 	GlobalSection(NDepend) = preSolution
 		Project = ".\NopCommerce.ndproj"

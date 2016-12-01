@@ -622,6 +622,8 @@
     <Content Include="Themes\DefaultClean\Content\css\owl.carousel.css" />
     <Content Include="Themes\DefaultClean\Content\css\styles.css" />
     <Content Include="Themes\DefaultClean\Content\css\styles.rtl.css" />
+    <Content Include="Themes\DefaultClean\Content\fonts\TradeGothicLTStd-Bold.svg" />
+    <Content Include="Themes\DefaultClean\Content\fonts\TradeGothicLTStd-Light.svg" />
     <Content Include="Themes\DefaultClean\Content\images\ajax-loader-small.gif" />
     <Content Include="Themes\DefaultClean\Content\images\back-button.png" />
     <Content Include="Themes\DefaultClean\Content\images\calendar-next.png" />
@@ -999,8 +1001,17 @@
     <Content Include="Views\Vendor\Info.cshtml" />
     <Content Include="Views\Common\Logo.cshtml" />
     <Content Include="Views\Common\Page.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\PostType\ListPost.cshtml" />
     <Content Include="Views\FieldWork\getFieldWork.cshtml" />
+=======
+    <Content Include="Themes\DefaultClean\Content\fonts\radegothicltstdlight.eot" />
+    <Content Include="Themes\DefaultClean\Content\fonts\radegothicltstdlight.ttf" />
+    <Content Include="Themes\DefaultClean\Content\fonts\TradeGothicLTStd-Bold.woff" />
+    <Content Include="Themes\DefaultClean\Content\fonts\TradeGothicLTStd-Light.woff" />
+    <Content Include="Themes\DefaultClean\Content\fonts\tradegothicltstdbold.eot" />
+    <Content Include="Themes\DefaultClean\Content\fonts\tradegothicltstdbold.ttf" />
+>>>>>>> 8fb87c2ace51d031dc959f272ea80d96659ca81e
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
