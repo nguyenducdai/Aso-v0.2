@@ -209,6 +209,8 @@ namespace Nop.Web.Controllers
                 Name = product.GetLocalized(x => x.Name),
                 ShortDescription = product.GetLocalized(x => x.ShortDescription),
                 FullDescription = product.GetLocalized(x => x.FullDescription),
+                Functions = product.GetLocalized(x => x.Functions),
+                FieldWork = product.GetLocalized(x => x.FieldWork),
                 MetaKeywords = product.GetLocalized(x => x.MetaKeywords),
                 MetaDescription = product.GetLocalized(x => x.MetaDescription),
                 MetaTitle = product.GetLocalized(x => x.MetaTitle),
@@ -1604,6 +1606,7 @@ namespace Nop.Web.Controllers
             {
                 IncludeShortDescriptionInCompareProducts = _catalogSettings.IncludeShortDescriptionInCompareProducts,
                 IncludeFullDescriptionInCompareProducts = _catalogSettings.IncludeFullDescriptionInCompareProducts,
+                
             };
 
             var products = _compareProductsService.GetComparedProducts();

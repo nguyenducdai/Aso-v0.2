@@ -40,6 +40,12 @@
 
 <ul class="top-menu">
     @Html.Widget("header_menu_before")
+    
+    @foreach (var topic in Model.Topics)
+    {
+        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+    }
+    <li><a href="http://localhost:15536/news">Tin Tức</a></li>
     @{
         var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
     }
@@ -47,10 +53,7 @@
     {
         @RenderCategoryLine(category, 0, false)
     }
-    @foreach (var topic in Model.Topics)
-    {
-        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
-    }
+    
     @*@if (Model.News.Count >= 0)
     {
         <li><a href="#">Tin Tức</a>
@@ -88,6 +91,7 @@
         {
             @RenderCategoryLine(category, 0, true)
         }
+        <li><a href="http://localhost:15536/news">Tin Tức</a></li>
         @foreach (var topic in Model.Topics)
         {
             <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>

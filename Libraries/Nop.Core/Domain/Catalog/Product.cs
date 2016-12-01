@@ -55,6 +55,16 @@ namespace Nop.Core.Domain.Catalog
         public string FullDescription { get; set; }
 
         /// <summary>
+        /// Gets or sets the Function
+        /// </summary>
+        public string Functions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the field work
+        /// </summary>
+        public string FieldWork { get; set; }
+
+        /// <summary>
         /// Gets or sets the admin comment
         /// </summary>
         public string AdminComment { get; set; }
