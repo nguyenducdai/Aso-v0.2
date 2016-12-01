@@ -1,7 +1,7 @@
 ﻿@model CustomerBackInStockSubscriptionsModel
 @using Nop.Web.Models.Catalog
 @using Nop.Web.Models.Customer
-@{    
+@{
     Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
 
     //title
@@ -37,7 +37,7 @@
                         $('#selectall').attr('checked', numChkBoxes == numChkBoxesChecked && numChkBoxes > 0);
                     });
                 });
-            </script>        
+            </script>
             using (Html.BeginRouteForm("CustomerBackInStockSubscriptions", FormMethod.Post))
             {
             <div class="subscription-list">

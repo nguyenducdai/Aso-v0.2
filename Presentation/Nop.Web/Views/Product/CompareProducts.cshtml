@@ -15,7 +15,6 @@
         columnWidth = Math.Round((decimal)(90M / Model.Products.Count), 0).ToString() + "%";
     }
 
-
     var specificationAttributes = new List<ProductSpecificationModel>();
     foreach (var product in Model.Products)
     {
@@ -102,7 +101,7 @@
                                 @foreach (var product in Model.Products)
                                 {
                                     var foundProductSpec = product.SpecificationAttributeModels.FirstOrDefault(psa => psa.SpecificationAttributeId == specificationAttribute.SpecificationAttributeId);
-                                                                
+
                                     <td style="width: @columnWidth;">
                                         @if (foundProductSpec != null)
                                         {
@@ -125,7 +124,7 @@
                                         }
                                     </td>
                                 }
-                            </tr>                    
+                            </tr>
                         }
                         @if (Model.IncludeFullDescriptionInCompareProducts)
                         {

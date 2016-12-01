@@ -1,0 +1,9 @@
+﻿Group: Aso Team
+FriendlyName: Fixed tax rate provider
+SystemName:  Aso.Team
+Version: 1.0
+SupportedVersions: 3.80
+Author: nguyen duc dai
+DisplayOrder: 1
+FileName: Nop.Plugin.Teams.Aso.dll
+Description: This plugin ..........

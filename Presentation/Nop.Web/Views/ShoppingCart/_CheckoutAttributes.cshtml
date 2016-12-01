@@ -35,7 +35,7 @@
                             {
                                 var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                     attributeValue.Name :
-                                    T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text; 
+                                    T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
                                 <option selected="@attributeValue.IsPreSelected" value="@attributeValue.Id">@attributeName</option>
                             }
                         </select>
@@ -49,7 +49,7 @@
                             {
                                 var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                     attributeValue.Name :
-                                    T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text; 
+                                    T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
                                 <li>
                                     <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" />
                                     <label for="@(controlId)_@(attributeValue.Id)">@attributeName</label>
@@ -67,7 +67,7 @@
                             {
                                 var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                     attributeValue.Name :
-                                    T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text; 
+                                    T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
                                 <li>
                                     <input id="@(controlId)_@(attributeValue.Id)" type="checkbox" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" @(attribute.AttributeControlType == AttributeControlType.ReadonlyCheckboxes ? Html.Raw(" disabled=\"disabled\"") : null) />
                                     <label for="@(controlId)_@(attributeValue.Id)">@attributeName</label>
@@ -116,7 +116,7 @@
                                 {
                                     <input id="@(controlId)" name="@(controlId)" type="hidden" />
                                 }
-                       
+
                         @*fine uploader container*@
                         <div id="@(controlId)uploader"></div>
                         @*fine uploader template (keep it synchronized to \Content\fineuploader\templates\default.html)*@
@@ -204,7 +204,7 @@
                                     {
                                         var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                             attributeValue.Name :
-                                            T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text; 
+                                            T("ShoppingCart.CheckoutAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
                                         <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null)>
                                             <label for="@(controlId)_@(attributeValue.Id)">
                                                 <span class="color-container" title="@attributeName">

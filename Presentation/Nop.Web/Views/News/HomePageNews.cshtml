@@ -9,37 +9,30 @@
         {
             foreach (var item in Model.NewsItems)
             {
-                <div class="col-md-4">
-                    <div class="col-item">
-                        <div class="photo">
-                            <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                        </div>
-                        <div class="info">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="news-date">-@item.CreatedOn.ToString("D")</span>
-                                    <h3>
-                                        <a class="news-title" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@item.Title</a>
-                                    </h3>
-                                    <div class="news-body">
-                                        @Html.Raw(item.Short)
-                                    </div>
-                                    <div class="buttons">
-                                        <a href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })" class="read-more">@T("News.MoreInfo")</a>
-                                    </div>
+                <div class="col-item">
+                    <div class="photo">
+                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                    </div>
+                    <div class="info">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="news-date">-@item.CreatedOn.ToString("D")</span>
+                                <h3>
+                                    <a class="news-title" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@item.Title</a>
+                                </h3>
+                                <div class="news-body">
+                                    @Html.Raw(item.Short)
+                                </div>
+                                <div class="buttons">
+                                    <a type="button" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })" class="read-more btn btn-primary">@T("News.MoreInfo")</a>
                                 </div>
                             </div>
-                            <div class="clearfix">
-                            </div>
+                        </div>
+                        <div class="clearfix">
                         </div>
                     </div>
                 </div>
-                }
             }
-        
+        }
+    </div>
 </div>
-</div>
-
-               
-            
- 

@@ -71,7 +71,7 @@
                             {
                                 var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                     attributeValue.Name :
-                                    T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;                             
+                                    T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
                                 <li>
                                     <input id="@(controlId)_@(attributeValue.Id)" type="checkbox" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" @(attribute.AttributeControlType == AttributeControlType.ReadonlyCheckboxes ? Html.Raw(" disabled=\"disabled\"") : null) />
                                     <label for="@(controlId)_@(attributeValue.Id)">@attributeName</label>
@@ -198,7 +198,7 @@
                                         <a id="@(controlId + "remove")" class="remove-download-buttonn" style="display: none;">@T("Common.FileUploader.RemoveDownload")</a>
                                     }
                                 </div>
-                    
+
                             }
                             break;
                         case AttributeControlType.ColorSquares:
@@ -208,7 +208,7 @@
                             {
                                 var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                     attributeValue.Name :
-                                    T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;  
+                                    T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
                                 <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null)>
                                     <label for="@(controlId)_@(attributeValue.Id)">
                                         <span class="color-container" title="@attributeName">
@@ -242,7 +242,7 @@
                                                 <span class="color-container">
                                                     <span class="color" style="background: url('@(attributeValue.ImageSquaresPictureModel.ImageUrl)') 50% 50% no-repeat;">&nbsp;</span>
                                                 </span>
-                                                <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"/>
+                                                <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" />
                                             </label>
                                             <div class="tooltip-container">
                                                 <div class="tooltip-header">@attributeName</div>

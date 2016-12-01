@@ -5,7 +5,7 @@
     {
         <div class="avatar">
             <img src="@(Model.AvatarUrl)" class="avatar-img" alt="Avatar" />
-        </div>         
+        </div>
     }
     <div class="profile-stats">
         <div class="title">
@@ -25,10 +25,10 @@
                 <li>
                     <label>@T("Profile.TotalPosts"):</label>
                     <span>@Model.TotalPosts</span>
-                </li>          
+                </li>
             }
             @if (Model.JoinDateEnabled)
-            {        
+            {
                 <li>
                     <label>@T("Profile.JoinDate"):</label>
                     <span>@Model.JoinDate</span>

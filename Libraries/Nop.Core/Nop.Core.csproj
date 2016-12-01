@@ -112,6 +112,8 @@
     <Compile Include="Domain\Customers\CustomerAttributeValue.cs" />
     <Compile Include="Domain\Customers\CustomerLoginResults.cs" />
     <Compile Include="Domain\Customers\Events.cs" />
+    <Compile Include="Domain\FieldWork\FieldWorkItem.cs" />
+    <Compile Include="Domain\FieldWork\FieldWorkSetting.cs" />
     <Compile Include="Domain\Forums\ForumPostVote.cs" />
     <Compile Include="Domain\Messages\MessageDelayPeriod.cs" />
     <Compile Include="Domain\Messages\QueuedEmailPriority.cs" />

@@ -10,7 +10,6 @@
         currentCategoryId = Convert.ToInt32(Url.RequestContext.RouteData.Values["categoryId"].ToString());
     }
 
-
     //current manufacturer ID
     int currentManufacturerId = 0;
     if (Url.RequestContext.RouteData.Values["controller"].ToString().Equals("catalog", StringComparison.InvariantCultureIgnoreCase) &&
@@ -18,7 +17,6 @@
     {
         currentManufacturerId = Convert.ToInt32(Url.RequestContext.RouteData.Values["manufacturerId"].ToString());
     }
-
 
     //current product ID
     int currentProductId = 0;
@@ -32,7 +30,7 @@
 {
     @section Breadcrumb {
         @RenderSection("Breadcrumb")
-    } 
+    }
 }
 <div class="side-2">
     @if (IsSectionDefined("left"))

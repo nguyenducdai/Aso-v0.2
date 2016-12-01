@@ -22,3 +22,6 @@ Tax.FixedRate
 Tax.CountryStateZip
 Widgets.GoogleAnalytics
 Widgets.NivoSlider
+Mobile.SMS.Verizon
+Other.MyPlugin
+Aso.Team

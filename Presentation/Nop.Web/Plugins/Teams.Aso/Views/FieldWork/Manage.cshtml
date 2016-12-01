@@ -1,0 +1,132 @@
+﻿@{
+    Layout = "_AdminLayout.cshtml";
+}
+@using Nop.Plugin.Teams.Aso.Data;
+@model IList<FieldWorkRecord>
+@using Nop.Core.Infrastructure
+@using Nop.Web.Framework.UI
+<div class="content">
+    <div class="form-horizontal">
+        <div class="content-header clearfix">
+            <h1 class="pull-left">
+                Manage Field Work
+            </h1>
+            <div class="pull-right">
+                <a href="/FieldWork/Create" class="btn bg-blue">
+                    <i class="fa fa-plus-square"></i>
+                    Add new
+                </a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success" aria-expanded="false">
+                        <span class="sr-only">&nbsp;</span>
+                        Close
+                    </button>
+                </div>
+            </div>
+            </div>
+            <div class="panel-group">
+                <div class="panel panel-default panel-search">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <div class="label-wrapper"><label class="control-label" for="SearchCategoryName" title="">Category name</label><div class="ico-help" title="A category name."><i class="fa fa-question-circle"></i></div></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input class="form-control text-box single-line" id="SearchCategoryName" name="SearchCategoryName" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display:none">
+                                    <div class="col-md-4">
+                                        <div class="label-wrapper"><label class="control-label" for="SearchStoreId" title="">Store</label><div class="ico-help" title="Search by a specific store."><i class="fa fa-question-circle"></i></div></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control" data-val="true" data-val-number="The field Store must be a number." id="SearchStoreId" name="SearchStoreId">
+                                            <option selected="selected" value="0">All</option>
+                                            <option value="1">Your store name</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <button type="button" id="search-categories" class="btn btn-primary btn-search"><i class="fa fa-search"></i>Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="products-grid"></div>
+                        <script>
+                            $(document).ready(function () {
+                                $("#products-grid").kendoGrid({
+                                    dataSource: {
+                                        type: "json",
+                                        transport: {
+                                            read: {
+                                                url: "@Html.Raw(Url.Action("List", "FieldWord"))",
+                                                type: "POST",
+                                                dataType: "json"
+                                            }
+                                              },
+                                        schema: {
+                                            data: "Data",
+                                            total: "Total",
+                                            errors: "Errors"
+                                        },
+                                        error: function (e) {
+                                            display_kendoui_grid_error(e);
+                                            // Cancel the changes
+                                            this.cancelChanges();
+                                        },
+                                        serverPaging: true,
+                                        serverFiltering: true,
+                                        serverSorting: true
+                                    },
+                                    columns: [
+                                          {
+                                            field: "Image",
+                                            title: "Image",
+                                            width: 200,
+                                            template: '<img src ="@Url.Content("~/Content/Images/Thumbs/")#=Image#" style="height:100px"/>',
+                                         },
+                                        {
+                                            field: "Title",
+                                            title: "Title",
+                                            width: 200
+                                        },
+                                        {
+                                            field: "Descaption",
+                                            title: "Descaption",
+                                            width: 300
+                                        }, {
+                                            field: "Create_at",
+                                            title: "Create At",
+                                            type: "date",
+                                            format: "{0:G}",
+                                            width: 100
+                                        }, {
+                                            field: "Id",
+                                            title: "Edit",
+                                            width: 50,
+                                            template: '<a href="/FieldWork/Update/#=Id#"> Edit</a>'
+                                        },
+                                         {
+                                            field: "Id",
+                                            title: "Del",
+                                            width: 50,
+                                            template: '<a href="/FieldWork/Del/#=Id#">Del</a>'
+                                         },
+                                    ]
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+

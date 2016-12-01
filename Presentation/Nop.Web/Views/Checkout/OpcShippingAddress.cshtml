@@ -6,7 +6,7 @@
     {
         <div class="section pickup-in-store">
             <p class="selector">
-                @Html.CheckBoxFor(x => x.PickUpInStore, new { @onclick = "Shipping.togglePickUpInStore(this)" })                
+                @Html.CheckBoxFor(x => x.PickUpInStore, new { @onclick = "Shipping.togglePickUpInStore(this)" })
                 <label for="@Html.FieldIdFor(model => model.PickUpInStore)">
                     @T("Checkout.PickupPoints").Text
                 </label>
@@ -27,7 +27,7 @@
             @if (Model.PickupPoints.Any())
             {
                 if (Model.PickUpInStoreOnly)
-                { 
+                {
                     @Html.HiddenFor(x => x.PickUpInStore)
                 }
                 <div class="select-pickup-points">
@@ -145,7 +145,7 @@
                                             </text>
                                         }
                                     }
-                                        
+
                                     $('#pickup-points-select').change(function() {
                                         new google.maps.event.trigger(markers.get(this.value), 'click' );
                                     });

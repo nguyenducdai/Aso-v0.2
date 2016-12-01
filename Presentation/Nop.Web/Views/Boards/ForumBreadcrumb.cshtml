@@ -21,7 +21,7 @@
                 @Html.RouteLink(Model.ForumGroupName, "ForumGroupSlug",
                 new { id = Model.ForumGroupId, slug = Model.ForumGroupSeName },
                 new { title = String.Format("{0}: {1} ", T("Forum.Breadcrumb.ForumGroupTitle"), Model.ForumGroupName) })
-            </li>        
+            </li>
         }
         @if (Model.ForumId > 0)
         {

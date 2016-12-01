@@ -15,7 +15,7 @@
             </div>
         }
         <div>
-            @Html.LabelFor(model => model.SenderName, new { }, ":") 
+            @Html.LabelFor(model => model.SenderName, new { }, ":")
                 @Html.TextBoxFor(model => model.SenderName, new { @class = "sender-name" })
         </div>
         @if (Model.GiftCardType == Nop.Core.Domain.Catalog.GiftCardType.Virtual)

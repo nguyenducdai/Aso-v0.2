@@ -11,7 +11,6 @@
     </span>
     <span id="helpfulness-vote-result-@(Model.ProductReviewId)" class="result"></span>
 
-    
     <script type="text/javascript">
         $(document).ready(function () {
             $('#vote-yes-@(Model.ProductReviewId)').click(function () {
@@ -32,12 +31,12 @@
                          $("#helpfulness-vote-yes-@(Model.ProductReviewId)").html(data.TotalYes);
                          $("#helpfulness-vote-no-@(Model.ProductReviewId)").html(data.TotalNo);
                          $("#helpfulness-vote-result-@(Model.ProductReviewId)").html(data.Result);
-                                                  
+
                          $('#helpfulness-vote-result-@(Model.ProductReviewId)').fadeIn("slow").delay(1000).fadeOut("slow");
                     },
                     error:function (xhr, ajaxOptions, thrownError){
                         alert('Failed to vote. Please refresh the page and try one more time.');
-                    }  
+                    }
                 });
         }
     </script>

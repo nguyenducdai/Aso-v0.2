@@ -113,7 +113,7 @@
                                         }
                                     </ul>
                                     <div class="select-button">
-                                        <input type="button" value="@T("Checkout.BillToThisAddress")" class="button-1 select-billing-address-button" onclick="selectBillingAddress@(item.Id)()"/>
+                                        <input type="button" value="@T("Checkout.BillToThisAddress")" class="button-1 select-billing-address-button" onclick="selectBillingAddress@(item.Id)()" />
                                         <script type="text/javascript">
                                             function selectBillingAddress@(item.Id)() {
                                                 if ($('#@Html.FieldIdFor(model => model.ShipToSameAddress)').is(':checked')) {

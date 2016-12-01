@@ -10,7 +10,6 @@
         successMessages.AddRange(ViewData[string.Format("nop.notifications.{0}", NotifyType.Success)] as IList<string>);
     }
 
-
     //error messages
     var errorMessages = new List<string>();
     if (TempData[string.Format("nop.notifications.{0}", NotifyType.Error)] != null)

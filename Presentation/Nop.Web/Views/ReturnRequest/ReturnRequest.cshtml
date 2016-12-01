@@ -50,7 +50,7 @@
                         </thead>
                         <tbody>
                             @foreach (var item in Model.Items)
-                            {   
+                            {
                                 <tr>
                                     <td class="product">
                                         <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })">@item.ProductName</a>
@@ -78,7 +78,7 @@
                     </table>
                 </div>
             </div>
-            
+
             <div class="fieldset">
                 <div class="title">
                     <strong>@T("ReturnRequests.WhyReturning")</strong>

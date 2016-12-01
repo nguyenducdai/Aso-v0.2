@@ -1,0 +1,85 @@
+﻿using Nop.Core.Plugins;
+using Nop.Plugin.Teams.Aso.Data;
+using Nop.Services.Cms;
+using Nop.Services.Localization;
+using Nop.Web.Framework.Menu;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Routing;
+
+namespace Nop.Plugin.Teams.Aso
+{
+    public class FieldWordPlugin : BasePlugin, IAdminMenuPlugin ,IWidgetPlugin
+    {
+        private readonly FieldWordRecordContext _context;
+        private ILocalizationService _localizationService;
+
+        public FieldWordPlugin(FieldWordRecordContext context, ILocalizationService localizationService)
+        {
+            _context = context;
+            _localizationService = localizationService;
+        }
+
+        public void GetConfigurationRoute(out string actionName, out string controllerName, out RouteValueDictionary routeValues)
+        {
+            actionName = "Configure";
+            controllerName = "FieldWord";
+            routeValues = new RouteValueDictionary()
+           {
+               { "Namespaces", "Nop.Plugin.Teams.Aso.Controllers" },
+               { "area", null }
+           };
+        }
+
+        public void GetDisplayWidgetRoute(string widgetZone, out string actionName, out string controllerName, out RouteValueDictionary routeValues)
+        {
+            actionName = "HomeView";
+            controllerName = "FieldWord";
+            routeValues = new RouteValueDictionary
+            {
+                {"Namespaces", "Nop.Plugin.Teams.Aso.Controllers"},
+                {"area", null},
+                {"widgetZone", widgetZone}
+            };
+        }
+
+        public IList<string> GetWidgetZones()
+        {
+            return new List<string>() { "home_page_top" };
+        }
+
+        public override void Install()
+        {
+            _context.Install();
+            base.Install();
+        }
+
+        // Add Item menu
+        public void ManageSiteMap(SiteMapNode rootNode)
+        {
+            var menuItem = new SiteMapNode()
+            {
+                SystemName = "Aso.Team",
+                Title = "Field Work",
+                ControllerName = "FieldWord",
+                ActionName = "Manage",
+                Visible = true,
+                RouteValues = new RouteValueDictionary() {
+                    { "area", null } },
+                IconClass = "fa-dot-circle-o"
+            };
+            var pluginNode = rootNode.ChildNodes.FirstOrDefault(x => x.SystemName == "Content management");
+            if (pluginNode != null)
+                pluginNode.ChildNodes.Add(menuItem);
+            else
+                rootNode.ChildNodes.Add(menuItem);
+        }
+
+        public override void Uninstall()
+        {
+            _context.Uninstall();
+            base.Uninstall();
+        }
+       }
+}

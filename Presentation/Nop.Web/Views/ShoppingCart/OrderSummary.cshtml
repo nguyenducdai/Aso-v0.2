@@ -21,7 +21,7 @@
                }
            </ul>
        </div>
-       }     
+       }
        @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
        using (Html.BeginRouteForm("ShoppingCart", FormMethod.Post, new { enctype = "multipart/form-data", id = "shopping-cart-form" }))
        {
@@ -247,7 +247,7 @@
                            <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
                        </div>
                        <div class="terms-of-service">
-                           <input id="termsofservice" type="checkbox" name="termsofservice"/>
+                           <input id="termsofservice" type="checkbox" name="termsofservice" />
                            <span>
                                 @T("Checkout.TermsOfService.IAccept")
                                <a class="read" id="read-terms">
