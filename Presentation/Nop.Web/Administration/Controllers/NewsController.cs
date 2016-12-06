@@ -16,6 +16,8 @@ using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Kendoui;
 using Nop.Web.Framework.Mvc;
+using System.Web;
+using System.IO;
 
 namespace Nop.Admin.Controllers
 {
@@ -195,36 +197,58 @@ namespace Nop.Admin.Controllers
         }
 
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
-        public ActionResult Create(NewsItemModel model, bool continueEditing)
+        public ActionResult Create(NewsItemModel model, bool continueEditing, HttpPostedFileBase file)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageNews))
                 return AccessDeniedView();
 
             if (ModelState.IsValid)
             {
-                var newsItem = model.ToEntity();
-                newsItem.StartDateUtc = model.StartDate;
-                newsItem.EndDateUtc = model.EndDate;
-                newsItem.CreatedOnUtc = DateTime.UtcNow;
-                _newsService.InsertNews(newsItem);
-                
-                //search engine name
-                var seName = newsItem.ValidateSeName(model.SeName, model.Title, true);
-                _urlRecordService.SaveSlug(newsItem, seName, newsItem.LanguageId);
-
-                //Stores
-                SaveStoreMappings(newsItem, model);
-
-                SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.News.NewsItems.Added"));
-
-                if (continueEditing)
+                if (file != null)
                 {
-                    //selected tab
-                    SaveSelectedTabName();
+                    var newsItem = model.ToEntity();
+                    newsItem.StartDateUtc = model.StartDate;
+                    newsItem.EndDateUtc = model.EndDate;
+                    newsItem.CreatedOnUtc = DateTime.UtcNow;
 
-                    return RedirectToAction("Edit", new { id = newsItem.Id });
+                    var fileName = Path.GetFileName(file.FileName);
+
+                    // move file to folder
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/Thumbs/"), fileName);
+                    if (System.IO.File.Exists(path))
+                    {
+                        ViewBag.Error = " File ảnh đã tồn tại";
+                    }
+                    else
+                    {
+                        file.SaveAs(path);
+                    }
+                    newsItem.Picture = file.FileName;
+                    _newsService.InsertNews(newsItem);
+
+                    //search engine name
+                    var seName = newsItem.ValidateSeName(model.SeName, model.Title, true);
+                    _urlRecordService.SaveSlug(newsItem, seName, newsItem.LanguageId);
+
+                    //Stores
+                    SaveStoreMappings(newsItem, model);
+
+                    SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.News.NewsItems.Added"));
+
+                    if (continueEditing)
+                    {
+                        //selected tab
+                        SaveSelectedTabName();
+
+                        return RedirectToAction("Edit", new { id = newsItem.Id });
+                    }
+
+                    return RedirectToAction("List");
+                }else
+                {
+                    return RedirectToAction("Create");
                 }
-                return RedirectToAction("List");
+                
 
             }
 
@@ -255,7 +279,7 @@ namespace Nop.Admin.Controllers
         }
 
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
-        public ActionResult Edit(NewsItemModel model, bool continueEditing)
+        public ActionResult Edit(NewsItemModel model, bool continueEditing, HttpPostedFileBase file)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageNews))
                 return AccessDeniedView();
@@ -270,6 +294,26 @@ namespace Nop.Admin.Controllers
                 newsItem = model.ToEntity(newsItem);
                 newsItem.StartDateUtc = model.StartDate;
                 newsItem.EndDateUtc = model.EndDate;
+
+                if (file == null)
+                {
+                    newsItem.Picture = model.Picture;
+                }else{
+                    var fileName = Path.GetFileName(file.FileName);
+
+                    // move file to folder
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/Thumbs/"), fileName);
+                    if (System.IO.File.Exists(path))
+                    {
+                        ViewBag.Error = " File ảnh đã tồn tại";
+                    }
+                    else
+                    {
+                        file.SaveAs(path);
+                    }
+                    newsItem.Picture = file.FileName;
+                }
+
                 _newsService.UpdateNews(newsItem);
 
                 //search engine name

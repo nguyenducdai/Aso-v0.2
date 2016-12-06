@@ -14,7 +14,7 @@
         <div id="news-edit" class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 @Html.RenderBootstrapTabHeader("tab-info", @T("Admin.ContentManagement.News.NewsItems.Info"), true)
-                @Html.RenderBootstrapTabHeader("tab-image", @T("Admin.ContentManagement.News.NewsItems.image"))
+                @Html.RenderBootstrapTabHeader("tab-image", @T("Admin.ContentManagement.News.NewsItems.Picture"))
                 @Html.RenderBootstrapTabHeader("tab-seo", @T("Admin.Common.SEO"))
             </ul>
             <div class="tab-content">
@@ -165,11 +165,10 @@
             <div class="panel-body">
                 <div class="form-group">
                     <div class="col-md-3">
-                       @* @Html.NopLabelFor(model => model.Image)*@
+                        @Html.NopLabelFor(model => model.Picture)
                     </div>
                     <div class="col-md-9">
                         <input type="file" name="file">
-                       @* @Html.ValidationMessageFor(model => model.Image)*@
                     </div>
                 </div>     
             </div>

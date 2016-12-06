@@ -116,6 +116,7 @@ namespace Nop.Web.Controllers
             model.Title = newsItem.Title;
             model.Short = newsItem.Short;
             model.Full = newsItem.Full;
+            model.Picture = newsItem.Picture;
             model.AllowComments = newsItem.AllowComments;
             model.CreatedOn = _dateTimeHelper.ConvertToUserTime(newsItem.StartDateUtc ?? newsItem.CreatedOnUtc, DateTimeKind.Utc);
             model.NumberOfComments = newsItem.CommentCount;

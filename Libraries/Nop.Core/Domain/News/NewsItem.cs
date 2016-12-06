@@ -36,6 +36,11 @@ namespace Nop.Core.Domain.News
         public string Full { get; set; }
 
         /// <summary>
+        /// Gets or sets the picture
+        /// </summary>
+        public string Picture { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the news item is published
         /// </summary>
         public bool Published { get; set; }

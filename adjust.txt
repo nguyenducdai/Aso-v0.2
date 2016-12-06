@@ -1,0 +1,2 @@
+﻿Thêm trường dữ liệu Picture (data type:nvarchar(MAX)) ở bảng News trong DB.
+

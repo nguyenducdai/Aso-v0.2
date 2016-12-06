@@ -7,7 +7,7 @@
     Html.SetActiveMenuItemSystemName("News items");
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="content-header clearfix">

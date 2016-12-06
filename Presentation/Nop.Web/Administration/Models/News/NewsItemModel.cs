@@ -28,8 +28,11 @@ namespace Nop.Admin.Models.News
         [AllowHtml]
         public string LanguageName { get; set; }
 
-        [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Image")]
-        public string Image { get; set; }
+        //[NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Image")]
+        //public string Image { get; set; }
+        
+        [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Picture")]
+        public string Picture { get; set; }
 
         //store mapping
         [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.LimitedToStores")]

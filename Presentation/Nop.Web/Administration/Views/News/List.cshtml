@@ -95,10 +95,16 @@
                                 columns: [
                                     {
                                         field: "Title",
-                                        title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Title")"
-                                    }, {
+                                        title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Title")",
+                                        width: 150,
+                                    }, @*{
                                         field: "LanguageName",
                                         title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Language")",
+                                        width: 200,
+                                    },*@{
+                                        field: "Picture",
+                                        title: "@T("Admin.ContentManagement.News.NewsItems.Fields.Picture")",
+                                        template: '<img src="@Url.Content("~/Content/Images/Thumbs/")#=Picture#" style="width:200px; height:200px;" />',
                                         width: 200,
                                     }, {
                                         field: "Comments",
