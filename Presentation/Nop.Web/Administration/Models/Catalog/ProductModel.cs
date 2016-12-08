@@ -87,13 +87,13 @@ namespace Nop.Admin.Models.Catalog
         [AllowHtml]
         public string FullDescription { get; set; }
 
-        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Functions")]
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Applications")]
         [AllowHtml]
-        public string Functions { get; set; }
+        public string Applications { get; set; }
 
-        [NopResourceDisplayName("Admin.Catalog.Products.Fields.FieldWork")]
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Specifications")]
         [AllowHtml]
-        public string FieldWork { get; set; }
+        public string Specifications { get; set; }
 
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.AdminComment")]
         [AllowHtml]
@@ -963,13 +963,13 @@ namespace Nop.Admin.Models.Catalog
         [AllowHtml]
         public string FullDescription { get; set; }
 
-        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Functions")]
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Applications")]
         [AllowHtml]
-        public string Functions { get; set; }
+        public string Applications { get; set; }
 
-        [NopResourceDisplayName("Admin.Catalog.Products.Fields.FieldWork")]
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Specifications")]
         [AllowHtml]
-        public string FieldWork { get; set; }
+        public string Specifications { get; set; }
 
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.MetaKeywords")]
         [AllowHtml]

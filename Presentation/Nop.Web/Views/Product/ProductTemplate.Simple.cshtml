@@ -57,10 +57,7 @@
         {
             <div itemscope itemtype="http://schema.org/Product" data-productid="@Model.Id">
                 <div class="product-essential">
-                    @Html.Widget("productdetails_before_pictures", Model.Id)
-                    <!--product pictures-->
-                    @Html.Partial("_ProductDetailsPictures", Model)
-                    @Html.Widget("productdetails_after_pictures", Model.Id)
+                    
                     <div class="overview">
                         @Html.Partial("_Discontinued", Model)
                         <div class="product-name">
@@ -85,8 +82,7 @@
                         @Html.Partial("_SKU_Man_GTIN_Ven", Model)
                         <!--delivery-->
                         @Html.Partial("_DeliveryInfo", Model)
-                        <!--sample download-->
-                        @Html.Partial("_DownloadSample", Model)
+                        
                         <!--attributes-->
                         @{
                             var dataDictAttributes = new ViewDataDictionary();
@@ -133,11 +129,18 @@
                         @Html.Widget("productdetails_overview_bottom", Model.Id)
                     </div>
                     
+                    <!--product pictures-->
+                    @Html.Widget("productdetails_before_pictures", Model.Id)
+                    @Html.Partial("_ProductDetailsPictures", Model)
+                    @Html.Widget("productdetails_after_pictures", Model.Id)
+
                     <div class="well tabsdt">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_detail1" data-toggle="tab">Chi tiết sản phẩm</a></li>
-                            <li><a href="#tab_detail2" data-toggle="tab">Chức năng</a></li>
-                            <li><a href="#tab_detail3" data-toggle="tab">Lĩnh vực</a></li>
+                            <li class="active"><a href="#tab_detail1" data-toggle="tab">Mô tả chi tiết</a></li>
+                            <li><a href="#tab_detail2" data-toggle="tab">Thông số kĩ thuật</a></li>
+                            <li><a href="#tab_detail3" data-toggle="tab">Hình ảnh</a></li>
+                            <li><a href="#tab_detail4" data-toggle="tab">Tài liệu</a></li>
+                            <li><a href="#tab_detail5" data-toggle="tab">Ứng dụng</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane active in" id="tab_detail1">
@@ -149,18 +152,38 @@
                                 }
                             </div>
                             <div class="tab-pane fade" id="tab_detail2">
-                                @if (!String.IsNullOrEmpty(Model.Functions))
+                                @if (!String.IsNullOrEmpty(Model.Specifications))
                                 {
-                                    <div class="full-description" itemprop="functions">
-                                        @Html.Raw(Model.Functions)
+                                    <div class="full-description" itemprop="fieldwork">
+                                        @Html.Raw(Model.Specifications)
                                     </div>
                                 }
                             </div>
                             <div class="tab-pane fade" id="tab_detail3">
-                                @if (!String.IsNullOrEmpty(Model.FieldWork))
+                                @if (Model.PictureModels.Count > 1)
+                                {
+                                    <div class="full-description" itemprop="functions">
+                                        <ul class="img-product-detail">
+                                            @foreach (var picture in Model.PictureModels)
+                                            {
+                                                <li>
+                                                    <img width="255" height="300" src="@picture.FullSizeImageUrl" alt="@picture.AlternateText" title="@picture.Title" />
+                                                    <span>@picture.Title</span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="tab_detail4">
+                                <!--sample download-->
+                                @Html.Partial("_DownloadSample", Model)
+                            </div>
+                            <div class="tab-pane fade" id="tab_detail5">
+                                @if (!String.IsNullOrEmpty(Model.Applications))
                                 {
                                     <div class="full-description" itemprop="fieldwork">
-                                        @Html.Raw(Model.FieldWork)
+                                        @Html.Raw(Model.Applications)
                                     </div>
                                 }
                             </div>

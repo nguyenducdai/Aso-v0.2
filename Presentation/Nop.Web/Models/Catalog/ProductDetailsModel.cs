@@ -37,8 +37,8 @@ namespace Nop.Web.Models.Catalog
         public string Name { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
-        public string Functions { get; set; }
-        public string FieldWork { get; set; }
+        public string Applications { get; set; }
+        public string Specifications { get; set; }
         public string ProductTemplateViewPath { get; set; }
         public string MetaKeywords { get; set; }
         public string MetaDescription { get; set; }
@@ -240,9 +240,9 @@ namespace Nop.Web.Models.Catalog
 
             public string Description { get; set; }
 
-            public string Functions { get; set; }
+            public string Applications { get; set; }
 
-            public string FieldWork { get; set; }
+            public string Specifications { get; set; }
 
 
             public string TextPrompt { get; set; }

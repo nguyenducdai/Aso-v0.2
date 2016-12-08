@@ -5051,6 +5051,14 @@ ul.list-top-menu li a,ul.list-top-menu li a:hover{
     padding: 20px 0 10px;
     color: #555;
 }
+ul.img-product-detail li{
+    display:inline-block;
+    list-style:none;
+    margin:10px;
+}
+ul.img-product-detail li span{
+    display:block;
+}
 
 @media all and (max-width: 1000px) {
 
@@ -6490,7 +6498,7 @@ ul.list-top-menu li a,ul.list-top-menu li a:hover{
 	width: auto;
 }
 .overview {
-	float: right;
+	float: left;
 	width: 52%;
 }
 .rental-attributes {

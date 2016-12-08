@@ -204,8 +204,8 @@ namespace Nop.Admin.Controllers
                                                                localized.FullDescription,
                                                                localized.LanguageId);
                 _localizedEntityService.SaveLocalizedValue(product,
-                                                               x => x.Functions,
-                                                               localized.Functions,
+                                                               x => x.Applications,
+                                                               localized.Applications,
                                                                localized.LanguageId);
                 _localizedEntityService.SaveLocalizedValue(product,
                                                                x => x.MetaKeywords,
@@ -1028,8 +1028,8 @@ namespace Nop.Admin.Controllers
                 //"Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property. "
                 //also it improves performance
                 productModel.FullDescription = "";
-                productModel.Functions = "";
-                productModel.FieldWork = "";
+                productModel.Applications = "";
+                productModel.Specifications = "";
 
                 //picture
                 var defaultProductPicture = _pictureService.GetPicturesByProductId(x.Id, 1).FirstOrDefault();
@@ -1199,8 +1199,8 @@ namespace Nop.Admin.Controllers
             var model = product.ToModel();
             PrepareProductModel(model, product, false, false);
 
-            model.Functions = product.Functions;
-            model.FieldWork = product.FieldWork;
+            model.Applications = product.Applications;
+            model.Specifications = product.Specifications;
 
             AddLocales(_languageService, model.Locales, (locale, languageId) =>
             {
@@ -1271,8 +1271,8 @@ namespace Nop.Admin.Controllers
                 //product
                 product = model.ToEntity(product);
 
-                product.Functions = model.Functions;
-                product.FieldWork = model.FieldWork;
+                product.Applications = model.Applications;
+                product.Specifications = model.Specifications;
 
                 product.UpdatedOnUtc = DateTime.UtcNow;
                 _productService.UpdateProduct(product);
