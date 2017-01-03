@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "_AdminLayout.cshtml";
+}
+@model Nop.Plugin.Teams.Aso.Data.DownLoadRecord
+<div class="content">
+    <div class="form-horizontal">
+        <div class="content-header clearfix">
+            <h1 class="pull-left">
+                Aso Company
+
+            </h1>
+            <div class="pull-right">
+                <a href="/download/create" class="btn bg-blue">
+                    <i class="fa fa-plus-square"></i>
+                    Thêm Mới Tài Liệu
+                </a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success" aria-expanded="false">
+                        <span class="sr-only">&nbsp;</span>
+                        Đóng
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-search">
+                        <div class="panel-body" style="min-height:301px">
+                            <div class="row">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item disabled">Tùy Chọn</a>
+                                    <a href="#" class="list-group-item">Tài Liệu tải lên</a>
+                                    <a href="/aso/case" class="list-group-item">Lĩnh Vực Hoạt Động</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-search">
+                        <div class="panel-body">
+                            <h3>Thêm tài liệu</h3>
+                            @if (ViewBag.Alert != "")
+                            {
+                                <div class="alert alert-success">
+                                    @ViewBag.Alert 
+                                </div>
+
+                            }
+                            <form method="post" enctype="multipart/form-data" action="/download/d-create">
+                                <div>
+                                    <label>Tên Tài liệu</label>
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+
+                                <div>
+                                    <label>Hình ảnh đại diện</label>
+                                    <input type="file" name="img" class="form-control" />
+                                </div>
+
+                                <div>
+                                    <label>File đính kèm</label>
+                                    <input type="file" name="file" class="form-control" />
+                                </div>
+
+                                <div>
+                                    <label></label>
+                                    <button type="submit" class="btn btn-default">Lưu</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

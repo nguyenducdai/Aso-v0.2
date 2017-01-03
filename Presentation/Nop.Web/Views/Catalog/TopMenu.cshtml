@@ -4,48 +4,56 @@
 
 @helper RenderCategoryLine(CategorySimpleModel category, int level, bool responsiveMobileMenu)
 {
+var categoryService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Services.Catalog.ICategoryService>();
+var pictureService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Services.Media.IPictureService>
+    ();
+var categoryEntity = categoryService.GetCategoryById(category.Id);
+var categoryImageUrl = pictureService.GetPictureUrl(categoryEntity.PictureId, 70);
+ 
     <li>
-        <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })">@category.Name
-        @if (category.NumberOfProducts.HasValue)
-        {
-            <text> @T("Categories.TotalProducts", category.NumberOfProducts.Value)</text>
-        }
-        </a>
-        @{
-            //subcategories
-            var subCategories = responsiveMobileMenu ?
-                //responsive (all categories)
-                category.SubCategories :
-                //standard design (only categories with "IncludeInTopMenu")
-                category.SubCategories.Where(x => x.IncludeInTopMenu).ToList();
+        @* @Url.RouteUrl("Category", new { SeName = category.SeName }) *@
+       
+                <a href="#">@category.Name
+                   
+                @if (category.NumberOfProducts.HasValue)
+                {
+                    <text> @T("Categories.TotalProducts", category.NumberOfProducts.Value)</text>
+                }
+            </a>
+            @{
+                //subcategories
+                var subCategories = responsiveMobileMenu ?
+                    //responsive (all categories)
+                    category.SubCategories :
+                    //standard design (only categories with "IncludeInTopMenu")
+                    category.SubCategories.Where(x => x.IncludeInTopMenu).ToList();
 
-            var levelClass = "";
-            if (level == 0)
-            {
-                levelClass = "first-level";
+                var levelClass = "";
+                if (level == 0)
+                {
+                    levelClass = "first-level";
+                }
+                if (subCategories.Count > 0)
+                {
+                    <div class="sublist-toggle"></div>
+                    <ul class="sublist @levelClass">
+                        @foreach (var subCategory in subCategories)
+                        {
+                            <img src="@categoryImageUrl" alt="" title="@category.Name" />
+                            @RenderCategoryLine(subCategory, level + 1, responsiveMobileMenu)
+                        }
+                    </ul>
+                }
             }
-            if (subCategories.Count > 0)
-            {
-                <div class="sublist-toggle"></div>
-                <ul class="sublist @levelClass">
-                    @foreach (var subCategory in subCategories)
-                    {
-                        @RenderCategoryLine(subCategory, level + 1, responsiveMobileMenu)
-                    }
-                </ul>
-            }
-        }
-    </li>
+</li>
 }
 
+@*@foreach (var topic in Model.Topics)
+{
+    <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+}*@
 <ul class="top-menu">
     @Html.Widget("header_menu_before")
-    
-    @foreach (var topic in Model.Topics)
-    {
-        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
-    }
-    <li><a href="http://localhost:15536/news">Tin Tức</a></li>
     @{
         var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
     }
@@ -53,43 +61,10 @@
     {
         @RenderCategoryLine(category, 0, false)
     }
-<<<<<<< HEAD
-    @*@foreach (var topic in Model.Topics)
-    {
-        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
-<<<<<<< HEAD
-    }*@
-=======
-    }
-=======
-    
->>>>>>> 8fb87c2ace51d031dc959f272ea80d96659ca81e
-    @*@if (Model.News.Count >= 0)
-    {
-        <li><a href="#">Tin Tức</a>
-            <div class="sublist-toggle"></div>
-            <ul class="sublist first-level">
-                @foreach (var news in Model.News)
-                {
-                    <li><a href="@Url.RouteUrl("News", new { SeName = news.SeName })">@news.Name</a></li>
-                }
-            </ul>
-        </li>
-
-    }*@
-
->>>>>>> f37cad85b9701714fe7abd352ae3368d14461fee
-    @*@if (rootCategories.Count == 0 && Model.Topics.Count == 0)
-    {
-
-        if (Model.NewProductsEnabled)
-        {
-            <li><a href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a>
-            </li>
-        }
-    }*@
     @Html.Widget("header_menu_after")
 </ul>
+
+@*//mobile*@
 
 @{
     var rootCategoriesResponsive = Model.Categories.ToList();
@@ -102,7 +77,7 @@
         {
             @RenderCategoryLine(category, 0, true)
         }
-        <li><a href="http://localhost:15536/news">Tin Tức</a></li>
+  
         @foreach (var topic in Model.Topics)
         {
             <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
@@ -116,16 +91,6 @@
                 <li>
                     <a href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a>
                 </li>
-            }
-            <li><a href="@Url.RouteUrl("ProductSearch")">@T("Search")</a> </li>
-            <li><a href="@Url.RouteUrl("CustomerInfo")">@T("Account.MyAccount")</a></li>
-            if (Model.BlogEnabled)
-            {
-                <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
-            }
-            if (Model.ForumEnabled)
-            {
-                <li><a href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></li>
             }
             <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
         }

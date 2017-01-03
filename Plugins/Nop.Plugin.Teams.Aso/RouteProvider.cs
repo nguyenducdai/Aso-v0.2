@@ -21,11 +21,17 @@ namespace Nop.Plugin.Teams.Aso
 
         public void RegisterRoutes(RouteCollection routes)
         {
-            routes.MapRoute("Nop.Plugin.Teams.Aso.Manage",
-                "FieldWork/Manage",
-                new { controller = "FieldWord", action = "Manage" },
+            routes.MapRoute("Nop.Plugin.Teams.Aso.Index",
+                "aso/index",
+                new { controller = "FieldWord", action = "Index" },
                 new[] { "Nop.Plugin.Teams.Aso.Controllers" }
            );
+
+            routes.MapRoute("Nop.Plugin.Teams.Aso.Manage",
+               "aso/case",
+               new { controller = "FieldWord", action = "Manage" },
+               new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+          );
 
             routes.MapRoute("Nop.Plugin.Teams.Aso.List",
               "FieldWork/List",
@@ -69,6 +75,33 @@ namespace Nop.Plugin.Teams.Aso
                new { controller = "FieldWord", action = "DoUpdate" },
                new[] { "Nop.Plugin.Teams.Aso.Controllers" }
              );
+
+            //CREATE DOCUMENT
+            routes.MapRoute("Nop.Plugin.Teams.Aso.CreateDocument",
+              "download/create",
+              new { controller = "DocumentAso", action = "CreateDocument" },
+              new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+            );
+
+            routes.MapRoute("Nop.Plugin.Teams.Aso.DoCreateDocument",
+              "download/d-create",
+              new { controller = "DocumentAso", action = "DoCreateDocument" },
+              new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+            );
+
+            routes.MapRoute("Nop.Plugin.Teams.Aso.ListDoc",
+             "download/list",
+             new { controller = "DocumentAso", action = "ListDoc" },
+             new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+           );
+
+            routes.MapRoute("Nop.Plugin.Teams.Aso.DelDoc",
+            "download/del/{id}",
+            new { controller = "DocumentAso", action = "DelDoc" },
+            new { id = @"\d+" },
+            new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+          );
+
         }
     }
 }

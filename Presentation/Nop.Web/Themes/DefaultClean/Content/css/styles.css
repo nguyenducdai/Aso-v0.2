@@ -44,7 +44,12 @@ ol, ul {
 a img {
 	border: none;
 }
-
+h1, h2, h3, h4, h5, h6{
+    margin: 0 0 10px;
+}
+a{
+    text-decoration: none;
+}
 a:active {
 	outline: none;
 }
@@ -150,6 +155,7 @@ label, label + * {
 	z-index: 0;
 	width: 90%;
 	margin: 0 auto;
+    padding: 2em 0 1em;
 }
 .master-column-wrapper {
 	position: relative;
@@ -917,6 +923,19 @@ label, label + * {
 	background-color: #007fba;
 	text-align: center;
 }
+
+.footer:before{
+        border-bottom: 20px solid #007FBA;
+    border-left: 100vw solid transparent;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    height: 0;
+    width: 0;
+    background-color: white;
+}
+
 
 .footer-upper {
 	width: 95%;
@@ -4072,11 +4091,9 @@ label, label + * {
 .post-title,
 .news-title {
 	display: inline-block;
-	padding: 20px 10px;
-	line-height: 20px;
-    font-size: 16px;
+    font-size: 20px;
 	font-weight: bold;
-	color: #444;
+	color: #007FBA;
 }
 .post-title:hover,
 .news-title:hover {
@@ -4084,18 +4101,19 @@ label, label + * {
 }
 .post-date,
 .news-date {
-	display: block;
-	margin: 0 0 15px;
-	background-color: #f6f6f6;
-	padding: 10px;
-	font-style: italic;
-	color: #444;
+    color: #999999;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
 }
 .post-body,
 .news-body {
+    border-top:2px solid #007FBA;
 	margin: 0 0 20px;
-	padding: 0 10px;
 	line-height: 22px;
+    padding-top:20px;
 }
 .blog-page .tags, 
 .blogpost-page .tags {
@@ -6273,8 +6291,6 @@ ul.img-product-detail li span{
 	z-index: 5;
 	width: 980px;
 	margin: 0 auto 30px;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
 	padding: 8px 0;
 	text-align: center;
 }
@@ -6292,7 +6308,6 @@ ul.img-product-detail li span{
 }
 .header-menu > ul > li {
 	display: inline-block;
-	border-left: 1px solid #ddd;
 	padding: 0 15px;
 	vertical-align: middle;
 }
@@ -6783,12 +6798,12 @@ ul.img-product-detail li span{
 
 
 @media all and (min-width: 1200px){
-    .master-wrapper-content,.header,.footer-lower,.footer-upper {
-	    width: 1170px;
+    .master-wrapper-content,.header,.footer-lower,.footer-upper,.container_aso{
+	    width: 1092px;
 	    margin: auto;
     }
     .header-menu{
-        width: 1170px;
+        width: 100%;
     }
     
 }
@@ -6936,7 +6951,7 @@ ul.img-product-detail li span{
 .col-item
 {
     border: 1px solid #E1E1E1;
-    border-radius: 5px;
+    border-radius: 2px;
     background: #FFF;
 }
 
@@ -6944,7 +6959,7 @@ ul.img-product-detail li span{
 .col-item .photo img
 {
     margin: 0 auto;
-    width: 100%;
+    width: 40%;
 }
 
 .col-item .info
@@ -7030,6 +7045,20 @@ ul.img-product-detail li span{
     float: left;
     padding-left: 10px;
 }
+
+.owl-carousel-document .photo{
+    padding: 60px 16px;
+    text-align-: left;
+    text-align: CENTER;
+}
+.owl-carousel-document .photo img {
+    width:50% !important;
+}
+.owl-carousel-document .col-item {
+    background:#F6F6F6;
+    border:none !important;
+        min-height: 260px;
+}
 .controls
 {
     margin-top: 20px;
@@ -7039,4 +7068,59 @@ ul.img-product-detail li span{
     margin-right: 10px;
 }
 
+.banner {
+    padding: 96px 1em;
+    background-image: url('../images/benning-hero-bg.jpg');
+}
 
+.banner:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 127, 186, 0.6);
+}
+
+.banner {
+    color: white;
+    padding: 2em 1em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.banner .container_aso {
+    position: relative;
+    z-index: 1;
+    padding: 96px 1em;
+}
+.banner .container_aso .hero__title{
+    font-size: 4.5em;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    font-weight: bold;
+}
+.title_slider{
+    font-size: 2.5em;
+    padding: 0 0 5px;
+    font-weight: bold;
+    border-bottom: 4px solid #007FBA;
+    margin-bottom: 12px;
+}
+.owl-carousel .owl-controls{
+    position: absolute;
+    top: -48px;
+    right: 0;
+    font-size: 10px;
+}
+.owl-carousel .news-title{
+    color: #007FBA;
+    text-decoration: none;
+}
+.owl-carousel{
+    margin: 20px 0;
+}

@@ -1,8 +1,9 @@
 ﻿@model HomePageNewsItemsModel
 @using Nop.Web.Models.News;
 <div class="container">
-    <h3>
-        @T("home.news.title")
+    <h3 class="title_slider">
+        TIN TUC
+        @* @T("home.news.title")*@
     </h3>
     <div class="owl-carousel">
         @if (Model.NewsItems.Count > 0)
@@ -14,19 +15,12 @@
                         <img src="@Url.Content("~/Content/Images/Thumbs/"+item.Picture)" class="img-responsive" alt="a" />
                     </div>
                     <div class="info">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span class="news-date">-@item.CreatedOn.ToString("D")</span>
-                                <h3>
-                                    <a class="news-title" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@item.Title</a>
-                                </h3>
-                                <div class="news-body">
-                                    @Html.Raw(item.Short)
-                                </div>
-                                <div class="buttons">
-                                    <a type="button" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })" class="read-more btn btn-primary">@T("News.MoreInfo")</a>
-                                </div>
-                            </div>
+                        <span class="news-date">@item.CreatedOn.ToString("D")</span>
+                        <h3>
+                            <a class="news-title" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@item.Title</a>
+                        </h3>
+                        <div class="news-body">
+                            @Html.Raw(item.Short)
                         </div>
                         <div class="clearfix">
                         </div>

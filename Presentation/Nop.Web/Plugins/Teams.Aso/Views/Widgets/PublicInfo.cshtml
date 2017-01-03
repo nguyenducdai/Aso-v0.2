@@ -1,33 +1,28 @@
 ﻿@using Nop.Plugin.Teams.Aso.Data
 @model IEnumerable<FieldWorkRecord>
 <div class="container">
-    <h3>
-         @*@T("Case.Studies")*@
+    <h3 class="title_slider">
         Lĩnh Vực Hoạt Động
     </h3>
     <div class="owl-carousel">
-           @foreach (var item in Model)
+        @foreach (var item in Model)
             {
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="@Url.Content("~/Content/Images/Thumbs/"+item.Image)" class="img-responsive" alt="a" />
+            <div class="col-item">
+                <div class="photo">
+                    <img src="@Url.Content("~/Content/Images/Thumbs/"+item.Image)" class="img-responsive" alt="a" />
+                </div>
+                <div class="info">
+                    <span class="news-date">@item.Create_at.ToString("D") </span>
+                    <h3>
+                        <a class="news-title" href="">@item.Title</a>
+                    </h3>
+                    <div class="news-body">
+                        @Html.Raw(item.Descaption)
                     </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span class="news-date">@item.Create_at.ToString("D") </span>
-                                <h3>
-                                    <a class="news-title" href="">@item.Title</a>
-                                </h3>
-                                <div class="news-body">
-                                    @Html.Raw(item.Descaption)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix">
-                        </div>
+                    <div class="clearfix">
                     </div>
                 </div>
-            }
+            </div>
+        }
     </div>
 </div>

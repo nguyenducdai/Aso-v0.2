@@ -22,4 +22,3 @@ Shipping.USPS
 Tax.FixedRate
 Tax.CountryStateZip
 Widgets.GoogleAnalytics
-Widgets.NivoSlider

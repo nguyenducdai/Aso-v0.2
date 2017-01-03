@@ -622,6 +622,7 @@
     <Content Include="Themes\DefaultClean\Content\css\styles.rtl.css" />
     <Content Include="Themes\DefaultClean\Content\images\ajax-loader-small.gif" />
     <Content Include="Themes\DefaultClean\Content\images\back-button.png" />
+    <Content Include="Themes\DefaultClean\Content\images\benning-hero-bg.jpg" />
     <Content Include="Themes\DefaultClean\Content\images\calendar-next.png" />
     <Content Include="Themes\DefaultClean\Content\images\calendar-prev.png" />
     <Content Include="Themes\DefaultClean\Content\images\close.png" />
@@ -1000,6 +1001,7 @@
     <Content Include="Views\PostType\ListPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\FIleDownload\img\" />
     <Folder Include="Fonts\" />
     <Folder Include="Plugins\bin\" />
   </ItemGroup>

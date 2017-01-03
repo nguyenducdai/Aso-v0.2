@@ -36,6 +36,11 @@ namespace Nop.Plugin.Teams.Aso.Controllers
             _iRepository = iRepository;
         }
 
+        public ActionResult Index()
+        {
+            return View("~/Plugins/Teams.Aso/Views/FieldWork/Index.cshtml");
+        }
+
         public ActionResult Manage()
         {
             return View("~/Plugins/Teams.Aso/Views/FieldWork/Manage.cshtml");
@@ -164,7 +169,10 @@ namespace Nop.Plugin.Teams.Aso.Controllers
             var data = _iRepository.Table.ToList();
             return View("~/Plugins/Teams.Aso/Views/Widgets/PublicInfo.cshtml",data);
         }
+        public ActionResult viewLv()
+        {
+            return View("~/Plugins/Teams.Aso/Views/Widgets/DownloadWinget.cshtml");
+        }
 
-       
     }
 }

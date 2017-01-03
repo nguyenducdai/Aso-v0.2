@@ -1,1 +1,25 @@
-﻿<p>adjbdasdasjdasdbasdbdbashb</p>
+﻿@using Nop.Plugin.Teams.Aso.Data
+@model List<DownLoadRecord>
+<div class="container">
+    <h3 class="title_slider">
+        Tài Liệu
+    </h3>
+    <div class="owl-carousel-document">
+        @foreach (var item in Model)
+            {
+            <div class="col-item">
+                <div class="photo">
+                    <img src="@Url.Content("~/Content/FIleDownload/img/"+item.Image)" class="img-responsive" alt="a" />
+                    <a href="" class="link-download">@item.Title</a>
+                </div>
+                @*<div class="info">
+                      
+                    <div class="clearfix">
+                    </div>
+                </div>*@
+            </div>
+        }
+    </div>
+
+  
+</div>

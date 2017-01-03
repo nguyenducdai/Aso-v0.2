@@ -30,6 +30,14 @@ namespace Nop.Plugin.Teams.Aso
                { "Namespaces", "Nop.Plugin.Teams.Aso.Controllers" },
                { "area", null }
            };
+
+            actionName = "Configure";
+            controllerName = "DownloadDocument";
+            routeValues = new RouteValueDictionary()
+           {
+               { "Namespaces", "Nop.Plugin.Teams.Aso.Controllers" },
+               { "area", null }
+           };
         }
 
         public void GetDisplayWidgetRoute(string widgetZone, out string actionName, out string controllerName, out RouteValueDictionary routeValues)
@@ -54,10 +62,10 @@ namespace Nop.Plugin.Teams.Aso
                     {"widgetZone", widgetZone}
                 };
             }
-            if (widgetZone.Equals("GetWidget_download"))
+            if (widgetZone.Equals("GetWidget_download_aso"))
             {
-                actionName = "HomeView";
-                controllerName = " DownloadDocument";
+                actionName = "viewDocument";
+                controllerName = "DocumentAso";
                 routeValues = new RouteValueDictionary
                 {
                     {"Namespaces", "Nop.Plugin.Teams.Aso.Controllers"},
@@ -69,7 +77,8 @@ namespace Nop.Plugin.Teams.Aso
 
         public IList<string> GetWidgetZones()
         {
-            return new List<string>() { "GetWidget_linhvuc","GetWidget_download" };
+            //,"GetWidget_download" 
+            return new List<string>() { "GetWidget_linhvuc", "GetWidget_download_aso" };
         }
 
         public override void Install()
@@ -84,14 +93,15 @@ namespace Nop.Plugin.Teams.Aso
             var menuItem = new SiteMapNode()
             {
                 SystemName = "Aso.Team",
-                Title = "Field Work",
+                Title = "Aso Company",
                 ControllerName = "FieldWord",
-                ActionName = "Manage",
+                ActionName = "Index",
                 Visible = true,
                 RouteValues = new RouteValueDictionary() {
                     { "area", null } },
                 IconClass = "fa-dot-circle-o"
             };
+
             var pluginNode = rootNode.ChildNodes.FirstOrDefault(x => x.SystemName == "Content management");
             if (pluginNode != null)
                 pluginNode.ChildNodes.Add(menuItem);

@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "_AdminLayout.cshtml";
+}
+<div class="content">
+    <div class="form-horizontal">
+        <div class="content-header clearfix">
+            <h1 class="pull-left">
+               Aso Company
+
+            </h1>
+            <div class="pull-right">
+                <a href="/download/create" class="btn bg-blue">
+                    <i class="fa fa-plus-square"></i>
+                    Thêm Mới Tài Liệu
+                </a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success" aria-expanded="false">
+                        <span class="sr-only">&nbsp;</span>
+                        Đóng
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-search">
+                        <div class="panel-body" style="min-height:301px">
+                            <div class="row">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item disabled">Tùy Chọn</a>
+                                    <a href="#" class="list-group-item">Tài Liệu tải lên</a>
+                                    <a href="/aso/case" class="list-group-item">Lĩnh Vực Hoạt Động</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-search">
+                        <div class="panel-body">
+                            <div id="products-grid"></div>
+                            <script>
+                                    $(document).ready(function () {
+                                        $("#products-grid").kendoGrid({
+                                            dataSource: {
+                                                type: "json",
+                                                transport: {
+                                                    read: {
+                                                        url: "@Html.Raw(Url.Action("ListDoc", "DocumentAso"))",
+                                                        type: "POST",
+                                                        dataType: "json"
+                                                    }
+                                                },
+                                                schema: {
+                                                    data: "Data",
+                                                    total: "Total",
+                                                    errors: "Errors"
+                                                },
+                                                error: function (e) {
+                                                    display_kendoui_grid_error(e);
+                                                    // Cancel the changes
+                                                    this.cancelChanges();
+                                                },
+                                                serverPaging: true,
+                                                serverFiltering: true,
+                                                serverSorting: true
+                                            },
+                                            columns: [
+                                                  {
+                                                      field: "Title",
+                                                      title: "Tên Tài Liệu",
+                                                      width: 100,
+                                                  },
+                                                {
+                                                    field: "Create_at",
+                                                    title: "Ngày Tạo",
+                                                    type: "date",
+                                                    format: "{0:d}",
+                                                    width: 80
+                                                },
+                                                 {
+                                                     field: "Id",
+                                                     title: "hành động",
+                                                     width: 50,
+                                                     template: '<a href="/download/del/#=Id#"><i class="fa fa-minus-circle" aria-hidden="true"></i> Hủy</a>'
+                                                 },
+                                            ]
+                                        });
+                                    });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+    </div>
+</div>

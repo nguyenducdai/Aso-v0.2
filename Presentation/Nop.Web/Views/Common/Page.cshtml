@@ -4,10 +4,11 @@
 @using Nop.Core.Infrastructure
 @using Nop.Web.Models.Common;
 <ul class="list-top-menu">
-    @if (Model.SitemapEnabled)
+    <li><a href="@Url.Content("/")">Trang chủ</a></li>
+    @*@if (Model.SitemapEnabled)
     {
         <li><a href="@Url.RouteUrl("Sitemap")">@T("Sitemap")</a></li>
-    }
+    }*@
     @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn1).ToList())
     {
         <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
