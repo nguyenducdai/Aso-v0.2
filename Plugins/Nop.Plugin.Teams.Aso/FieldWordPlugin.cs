@@ -34,19 +34,42 @@ namespace Nop.Plugin.Teams.Aso
 
         public void GetDisplayWidgetRoute(string widgetZone, out string actionName, out string controllerName, out RouteValueDictionary routeValues)
         {
-            actionName = "HomeView";
-            controllerName = "FieldWord";
+            actionName = "";
+            controllerName = "";
             routeValues = new RouteValueDictionary
             {
                 {"Namespaces", "Nop.Plugin.Teams.Aso.Controllers"},
                 {"area", null},
                 {"widgetZone", widgetZone}
             };
+
+            if (widgetZone.Equals("GetWidget_linhvuc"))
+            {
+                actionName = "HomeView";
+                controllerName = "FieldWord";
+                routeValues = new RouteValueDictionary
+                {
+                    {"Namespaces", "Nop.Plugin.Teams.Aso.Controllers"},
+                    {"area", null},
+                    {"widgetZone", widgetZone}
+                };
+            }
+            if (widgetZone.Equals("GetWidget_download"))
+            {
+                actionName = "HomeView";
+                controllerName = " DownloadDocument";
+                routeValues = new RouteValueDictionary
+                {
+                    {"Namespaces", "Nop.Plugin.Teams.Aso.Controllers"},
+                    {"area", null},
+                    {"widgetZone", widgetZone}
+                };
+            }
         }
 
         public IList<string> GetWidgetZones()
         {
-            return new List<string>() { "home_page_top" };
+            return new List<string>() { "GetWidget_linhvuc","GetWidget_download" };
         }
 
         public override void Install()

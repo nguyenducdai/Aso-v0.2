@@ -24,6 +24,11 @@ namespace Nop.Plugin.Teams.Aso.Infrastucture
                 .As<IRepository<FieldWorkRecord>>()
                 .WithParameter(ResolvedParameter.ForNamed<IDbContext>(CONTEXT_NAME))
                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<EfRepository<DownLoadRecord>>()
+              .As<IRepository<DownLoadRecord>>()
+              .WithParameter(ResolvedParameter.ForNamed<IDbContext>(CONTEXT_NAME))
+              .InstancePerLifetimeScope();
         }
 
         public int Order

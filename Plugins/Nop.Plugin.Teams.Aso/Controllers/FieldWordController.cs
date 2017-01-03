@@ -161,7 +161,8 @@ namespace Nop.Plugin.Teams.Aso.Controllers
 
         public ActionResult HomeView()
         {
-            return View("~/Plugins/Teams.Aso/Views/Widgets/PublicInfo.cshtml");
+            var data = _iRepository.Table.ToList();
+            return View("~/Plugins/Teams.Aso/Views/Widgets/PublicInfo.cshtml",data);
         }
 
        

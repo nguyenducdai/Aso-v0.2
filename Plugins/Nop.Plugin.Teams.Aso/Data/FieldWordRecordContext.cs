@@ -43,6 +43,7 @@ namespace Nop.Plugin.Teams.Aso.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new FieldWordRecordMap());
+            modelBuilder.Configurations.Add(new DownLoadRecordMap());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -66,6 +67,9 @@ namespace Nop.Plugin.Teams.Aso.Data
         {
             var dbScript = "DROP TABLE FieldWord";
             Database.ExecuteSqlCommand(dbScript);
+
+            var dbScript1 = "DROP TABLE FileDocument";
+            Database.ExecuteSqlCommand(dbScript1);
             SaveChanges();
         }
 
