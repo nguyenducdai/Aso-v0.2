@@ -14,14 +14,16 @@
     <div class="header-menu">
         @Html.Action("TopMenu", "Catalog")
     </div>
-    <section class="banner">
-        <div class="container_aso">
-            <h1 class="hero__title">World class power solutions</h1>
-            <p class="hero__text"></p><p>BENNING designs, manufactures, installs and services industrial AC and DC UPS and power protection solutions that ensure the reliable<br> and safe operation of all types of critical loads in utilities, oil &amp; gas, transport, telecoms, IT and process &amp; automation applications.</p>
-            <p></p>
-            <a href="http://benninguk.com/company-profile/" class="button">Find out more</a>
-        </div>
-    </section>
+    @if (IsSectionDefined("Banner"))
+    {
+        @RenderSection("Banner")
+    }
+
+    @if (IsSectionDefined("Breadcrumb_line"))
+    {
+        @RenderSection("Breadcrumb_line")
+    }
+
     <div class="master-wrapper-content">
         @Html.Widget("content_before")
 

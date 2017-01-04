@@ -9,17 +9,29 @@ var pictureService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.S
     ();
 var categoryEntity = categoryService.GetCategoryById(category.Id);
 var categoryImageUrl = pictureService.GetPictureUrl(categoryEntity.PictureId, 70);
- 
+
     <li>
-        @* @Url.RouteUrl("Category", new { SeName = category.SeName }) *@
-       
-                <a href="#">@category.Name
-                   
+        @if (level > 0)
+        {
+            <img src="@categoryImageUrl" alt="" title="@category.Name" />
+            <a href="@Url.RouteUrl("Category", new { SeName = category.SeName }) "> @category.Name
+            @if (category.NumberOfProducts.HasValue)
+            {
+                <text> @T("Categories.TotalProducts", category.NumberOfProducts.Value)</text>
+            }
+            </a>
+        }
+        else
+        {
+            <a href="#" class="is_active">
+                @category.Name
                 @if (category.NumberOfProducts.HasValue)
                 {
                     <text> @T("Categories.TotalProducts", category.NumberOfProducts.Value)</text>
                 }
             </a>
+        }
+               
             @{
                 //subcategories
                 var subCategories = responsiveMobileMenu ?
@@ -39,7 +51,7 @@ var categoryImageUrl = pictureService.GetPictureUrl(categoryEntity.PictureId, 70
                     <ul class="sublist @levelClass">
                         @foreach (var subCategory in subCategories)
                         {
-                            <img src="@categoryImageUrl" alt="" title="@category.Name" />
+                         
                             @RenderCategoryLine(subCategory, level + 1, responsiveMobileMenu)
                         }
                     </ul>
@@ -108,3 +120,13 @@ var categoryImageUrl = pictureService.GetPictureUrl(categoryEntity.PictureId, 70
         });
     </script>
 }
+
+<script>
+    $(document).ready(function () {
+        $(".top-menu li").click(function () {
+            $('li > ul').not($(this).children("ul").toggle()).hide();
+            $(".banner").toggleClass('fix');
+            $(".headtitle").toggleClass('fix');
+        });
+    });
+</script>

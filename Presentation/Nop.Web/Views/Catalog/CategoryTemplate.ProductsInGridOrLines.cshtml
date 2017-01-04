@@ -24,9 +24,16 @@
 @using Nop.Core.Infrastructure;
 @using Nop.Web.Models.Catalog;
 @*category breadcrumb*@
-@section Breadcrumb
-{
-    @if (Model.DisplayCategoryBreadcrumb)
+
+@section Breadcrumb_line {
+    <div class="headtitle">
+        <div class="container_aso">
+            <h2 class="title">@Model.Name<h2>
+        </div>
+    </div>
+}
+
+    @*@if (Model.DisplayCategoryBreadcrumb)
     {
         <div class="breadcrumb">
             <ul>
@@ -52,8 +59,8 @@
             </ul>
         </div>
         @Html.Widget("categorydetails_after_breadcrumb", Model.Id)
-    }
-}
+    }*@
+
 <div class="page category-page">
     <div class="page-title">
         <h1>@Model.Name</h1>
@@ -116,20 +123,7 @@
         {
             @Html.Partial("_CatalogSelectors", Model.PagingFilteringContext, new ViewDataDictionary())
         }
-        @Html.Widget("categorydetails_before_filters", Model.Id)
-        <div class="product-filters">
-            @*filtering*@
-            @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
-            {
-                @Html.Partial("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter, new ViewDataDictionary())
-            }
-            @*filtering*@
-            @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
-            {
-                @Html.Partial("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter, new ViewDataDictionary())
-            }
-        </div>
-        @Html.Widget("categorydetails_before_product_list", Model.Id)
+ 
 
         @if (Model.Products.Count > 0)
         {
