@@ -2,10 +2,9 @@
 @using Nop.Web.Models.News;
 <div class="container_aso">
     <h3 class="title_slider">
-        TIN TUC
-        @* @T("home.news.title")*@
+        @T("home.news.title")
     </h3>
-    <div class="owl-carousel">
+    <div class="owl-carousel  owl-carousel-news">
         @if (Model.NewsItems.Count > 0)
         {
             foreach (var item in Model.NewsItems)

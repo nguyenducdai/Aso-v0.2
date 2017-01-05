@@ -34,7 +34,7 @@
             <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" itemprop="image" id="main-product-img-@Model.Id" />
         }
     </div>
-    @if (Model.PictureModels.Count > 1)
+    @*@if (Model.PictureModels.Count > 1)
     {
         <div class="picture-thumbs">
             @foreach (var picture in Model.PictureModels)
@@ -43,7 +43,7 @@
                     <img src="@picture.ImageUrl" alt="@picture.AlternateText" title="@picture.Title" />
                 </a>
             }
-        </div>
+        </div>*@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('.thumb-popup-link').magnificPopup(
@@ -61,5 +61,5 @@
                 });
             });
         </script>
-    }
+    @*}*@
 </div>

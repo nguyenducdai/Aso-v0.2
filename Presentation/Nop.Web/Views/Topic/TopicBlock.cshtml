@@ -1,5 +1,13 @@
 ﻿@model TopicModel
 @using Nop.Web.Models.Topics;
+
+@section Breadcrumb_line {
+    <div class="headtitle">
+        <div class="container_aso">
+            <h2 class="title">@T("Title.ContactUs")<h2>
+        </div>
+    </div>
+}
 @if (Model.IsPasswordProtected)
 {
     <script type="text/javascript">

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+}
+
+@using Nop.Plugin.Teams.Aso.Data
+@model List<DownLoadRecord>
+@section Breadcrumb_line {
+    <div class="headtitle">
+        <div class="container_aso">
+            <h3 class="title">@T("Title.downlaod")<h3>
+        </div>
+    </div>
+}
+<div class="page home-page">
+    <div class="page-body">
+       <h3 class="title_download_ar"> @T("page.downlaod.title")</h3>
+        <div class="panel panel-default" id="panel-document">
+            <div class="panel-heading" id="panel-heading-download">Tất cả các tài liệu</div>
+            <div class="panel-body" id="panel-body-download">
+                <ul>
+                    @foreach (var item in Model)
+                    {
+
+                        <li><i class="fa fa-download" aria-hidden="true"></i><a href="/archive/document" class="link-download"> @item.Title</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

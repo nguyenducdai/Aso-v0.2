@@ -7,10 +7,10 @@
 @section  Banner{
 <section class="banner">
     <div class="container_aso">
-        <h1 class="hero__title">World class power solutions</h1>
-        <p class="hero__text"></p><p>BENNING designs, manufactures, installs and services industrial AC and DC UPS and power protection solutions that ensure the reliable<br> and safe operation of all types of critical loads in utilities, oil &amp; gas, transport, telecoms, IT and process &amp; automation applications.</p>
+        <h1 class="hero__title">@T("Banner_title")</h1>
+        <p class="hero__text"></p>@T("Banner_descaption")</p>
         <p></p>
-        <a href="http://benninguk.com/company-profile/" class="button">Find out more</a>
+        <a href="@Url.RouteUrl("ContactUs")" class="button banner-link">@T("Banner_link")</a>
     </div>
 </section>
 }

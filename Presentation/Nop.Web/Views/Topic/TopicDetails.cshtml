@@ -2,6 +2,7 @@
 @using Nop.Core.Domain.Seo
 @using Nop.Core.Infrastructure
 @using Nop.Web.Models.Topics;
+
 @{
     var isPopup = ViewBag.IsPopup;
     if (isPopup == null || isPopup == false)
@@ -86,11 +87,19 @@
         }
     </div>
 }
+@section Breadcrumb_line {
+    <div class="headtitle">
+        <div class="container_aso">
+            <h2 class="title"> @T("aboutus")</h2>
+        </div>
+    </div>
+}
 <div class="page topic-page" id="ph-topic">
     <div class="page-title" id="ph-title">
-        <h1>@Model.Title</h1>
+        <h1>Giới Thiệu về Công Ty Cổ Phần Cơ Điện Aso </h1>
     </div>
     <div class="page-body">
         @Html.Raw(Model.Body)
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Nc76Y0gJcI5muJY-INFmYbacav8" width="100%" height="480"></iframe>
     </div>
 </div>

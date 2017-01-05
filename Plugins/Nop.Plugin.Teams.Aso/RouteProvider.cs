@@ -102,6 +102,19 @@ namespace Nop.Plugin.Teams.Aso
             new[] { "Nop.Plugin.Teams.Aso.Controllers" }
           );
 
+          routes.MapRoute("Nop.Plugin.Teams.Aso.ArchiveDocument",
+          "archive/document",
+          new { controller = "DocumentAso", action = "ArchiveDocument" },
+          new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+        );
+
+            routes.MapRoute("Nop.Plugin.Teams.Aso.Detail",
+            "case/detail/{id}",
+            new { controller = "FieldWord", action = "Detail" },
+             new { id = @"\d+" },
+            new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+          );
+
         }
     }
 }

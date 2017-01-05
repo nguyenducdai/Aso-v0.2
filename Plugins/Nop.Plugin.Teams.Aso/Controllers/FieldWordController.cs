@@ -174,5 +174,11 @@ namespace Nop.Plugin.Teams.Aso.Controllers
             return View("~/Plugins/Teams.Aso/Views/Widgets/DownloadWinget.cshtml");
         }
 
+        public ActionResult Detail(int id)
+        {
+            var data = _iRepository.GetById(id);
+            return View("~/Plugins/Teams.Aso/Views/Widgets/DetailActicle.cshtml",data);
+        }
+
     }
 }

@@ -119,5 +119,12 @@ namespace Nop.Plugin.Teams.Aso.Controllers
             }
             return RedirectToAction("CreateDocument");
         }
+
+
+        public ActionResult ArchiveDocument()
+        {
+            var model = _iRepository.Table.ToList();
+            return View("~/Plugins/Teams.Aso/Views/Widgets/PageAchiverDownloand.cshtml",model);
+        }
     }
 }

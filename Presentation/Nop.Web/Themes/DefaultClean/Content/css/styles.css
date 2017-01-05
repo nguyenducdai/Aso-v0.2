@@ -188,7 +188,7 @@ label, label + * {
 	border-bottom: 1px solid #ddd;
 	padding: 6px 10px;
 }
-.page-title h1 {
+.page-title h1 ,.product-name h1{
 	font-size: 30px;
 	font-weight: bold;
      color:#007FBA;
@@ -251,8 +251,10 @@ label, label + * {
 
 /*********** GLOBAL FORMS ***********/
 
-
-
+a:focus, a:hover{
+    text-decoration:none !important;
+}
+.sublist li img{width:20%}
 .fieldset, .section {
 	position: relative;
 	margin: 0 0 40px;
@@ -268,9 +270,20 @@ label, label + * {
 .section .title strong {
 	font-weight: normal;
 }
+.contact-page .fieldset .form-fields input,textarea{
+    width:100% !important;
+}
+.contact-page .fieldset .form-fields .buttons {
+    text-align:left;
+}
+.contact-page .fieldset .form-fields div {
+    padding:10px;
+}
+.field-validation-error{
+    float:right;
+}
 .form-fields {
 	position: relative;
-	border-top: 1px solid #e6e6e6;
 	background-color: #f9f9f9;
 	padding: 30px 15px;
 }
@@ -1286,6 +1299,10 @@ label, label + * {
 	margin: 0 0 50px;
 	background-color: #f6f6f6;
 	padding: 5px 10px;
+    border-radius:0 ;
+}
+.breadcrumb ul{
+    margin-bottom:0 !important;
 }
 .breadcrumb ul {
 	font-size: 0;
@@ -1295,9 +1312,8 @@ label, label + * {
 }
 .breadcrumb li * {
 	display: inline-block;
-	margin: 0 5px;
+	margin: 0 1px;
 	font-size: 14px; /*reset zeroing*/
-	line-height: 32px;
 }
 .breadcrumb strong {
 	font-weight: normal;
@@ -1630,6 +1646,9 @@ label, label + * {
 }
 .product-grid .title strong {
 	font-weight: normal;
+        font-size: 30px;
+    font-weight: bold;
+    color: #007FBA;
 }
 
 .manufacturer-grid .title {
@@ -1729,7 +1748,7 @@ label, label + * {
 	clear: both;
 }
 .gallery {
-	margin: 0 auto 50px;
+	margin: 0 auto 0px;
 }
 .gallery .picture-wrapper {
     margin: 0 0 10px;
@@ -1790,10 +1809,7 @@ label, label + * {
 	border-bottom: 1px solid #ddd;
     padding: 0 0 10px;
 }
-.overview .product-name h1 {
-	font-size: 30px;
-    font-weight: normal;
-}
+
 .overview .short-description {
 	margin: 0 0 25px;
 	line-height: 22px;
@@ -2776,11 +2792,11 @@ label, label + * {
 	min-width: 140px;
 	border: none;
 	background-color: #4ab2f1;
-    padding: 10px 30px;
+    padding: 5px 60px;
 	text-align: center;
 	font-size: 15px;
 	color: #fff;
-	text-transform: uppercase;
+	text-transform: capitalize;
 }
 .contact-page .button-1:hover,
 .email-a-friend-page .button-1:hover,
@@ -3249,6 +3265,7 @@ label, label + * {
 	padding: 20px;
 	font-size: 0;
 }
+#page-detail-button{text-align:left !important}
 .shopping-cart-page .common-buttons input {
 	display: inline-block;
 	min-width: 180px;
@@ -3258,6 +3275,10 @@ label, label + * {
 	padding: 10px 20px;
 	font-size: 15px;
 	color: #fff;
+}
+
+.contact-page div.fieldset{
+    margin-bottom:7px !important;
 }
 .shopping-cart-page .common-buttons input:hover {
 	background-color: #999;
@@ -4110,15 +4131,15 @@ label, label + * {
 .news-date {
     color: #999999;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     background-color: transparent;
     padding: 0;
-    margin: 0;
+    margin-bottom: 2px;
 }
 .post-body,
 .owl-stage 
 .news-body {
-    border-top:2px solid #007FBA;
+    border-top:1px solid #007FBA;
 	margin: 0 0 20px;
 	line-height: 22px;
     padding-top:20px;
@@ -5087,7 +5108,13 @@ ul.list-top-menu li a,ul.list-top-menu li a:hover{
 .tabsdt ul.nav-tabs > li > a{
     font-size: 17px;
     font-weight:bold;
+    color:#007FBA;
 }
+#tab-product .active a {
+    border-top:2px solid #007FBA;
+    border-radius:0 ;   
+}
+
 .tabsdt .tab-content>.tab-pane{
     padding: 20px 0 10px;
     color: #555;
@@ -6333,7 +6360,7 @@ ul.img-product-detail li span{
 	position: relative;
 	z-index: 5;
 	width: 980px;
-	margin: 0 auto 30px;
+	margin: 0 auto 9px;
 	padding: 8px 0;
 	text-align: center;
 }
@@ -6361,8 +6388,8 @@ ul.img-product-detail li span{
 	display: block;
 	padding: 5px 10px;
 	line-height: 20px;
-	font-size: 17px; /*reset zeroing*/
-	color: #555;
+	font-size: 20px; /*reset zeroing*/
+	color: #007FBA;
 	cursor: pointer;
 }
 /*.header-menu > ul > li > a:hover {
@@ -6414,7 +6441,7 @@ ul.img-product-detail li span{
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
-    padding: 2em 1em;
+    padding: 1em 1em;
 }
 
 /*.header-menu .sublist li:hover > a {
@@ -6542,7 +6569,7 @@ ul.img-product-detail li span{
 
 
 .breadcrumb {
-	margin: 0 0 20px;
+	margin: 0 0 -6px;
 }
 
 .item-box .buttons {
@@ -6572,14 +6599,21 @@ ul.img-product-detail li span{
 
 .gallery {
 	float: left;
-	width: 46%;
+	width: 44%;
 }
 .gallery .picture {
 	width: auto;
 }
 .overview {
 	float: left;
-	width: 52%;
+    width: 54%;
+    margin-right: 21px;
+}
+#tab-product {
+    padding:0;
+    border:none;
+    background : #fff;
+
 }
 .rental-attributes {
 	overflow: hidden;
@@ -7036,6 +7070,10 @@ ul.img-product-detail li span{
     width: 40%;
 }
 
+.owl-carousel-news .col-item .photo img{
+    height:144px;
+}
+
 .col-item .info
 {
     padding: 10px;
@@ -7146,6 +7184,13 @@ ul.img-product-detail li span{
     padding: 96px 1em;
     background-image: url('../images/benning-hero-bg.jpg');
 }
+.banner-link {
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 3px;
+    top: 10px;
+    position: relative;
+}
 
 .banner:before {
     content: "";
@@ -7172,17 +7217,47 @@ ul.img-product-detail li span{
     padding: 96px 1em;
 }
 .banner .container_aso .hero__title{
-    font-size: 4.5em;
+    font-size: 3.5em;
     color: #fff;
     margin-top: 0;
     margin-bottom: 0.75em;
     font-weight: bold;
+    text-transform:capitalize
 }
 .title_slider{
-    font-size: 2.5em;
+    font-size: 2.2em;
     padding: 0 0 5px;
     font-weight: bold;
-    border-bottom: 4px solid #007FBA;
+    border-bottom: 3px solid #007FBA;
+    margin-bottom: 12px;
+}
+
+.title_download_ar{
+     font-size: 2.3em;
+    padding: 0 0 22px;
+    font-weight: bold;
+    border-bottom: 2px solid #007FBA;
+    margin-bottom: 12px;
+}
+#panel-heading-download
+{
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+#panel-body-download ul li{
+    padding:5px;
+}
+#panel-body-download ul li a{
+    color:#007FBA
+}
+}
+.title_download_ar
+{
+    font-size: 2.3em;
+    padding: 0 0 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #007FBA;
     margin-bottom: 12px;
 }
 .owl-carousel .owl-controls{

@@ -2,7 +2,7 @@
 @model List<DownLoadRecord>
 <div class="container_aso">
     <h3 class="title_slider">
-        Tài Liệu
+        @T("Tille-document-download")
     </h3>
     <div class="owl-carousel-document">
         @foreach (var item in Model)
@@ -10,7 +10,7 @@
             <div class="col-item">
                 <div class="photo">
                     <img src="@Url.Content("~/Content/FIleDownload/img/"+item.Image)" class="img-responsive" alt="a" />
-                    <a href="" class="link-download">@item.Title</a>
+                    <a href="archive/document" class="link-download">@item.Title</a>
                 </div>
                 @*<div class="info">
                       

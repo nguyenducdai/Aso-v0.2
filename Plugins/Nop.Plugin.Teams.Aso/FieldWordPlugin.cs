@@ -73,12 +73,36 @@ namespace Nop.Plugin.Teams.Aso
                     {"widgetZone", widgetZone}
                 };
             }
+
+            if (widgetZone.Equals("Archive"))
+            {
+                actionName = "ArchiveDocument";
+                controllerName = "DocumentAso";
+                routeValues = new RouteValueDictionary
+                {
+                    {"Namespaces", "Nop.Plugin.Teams.Aso.Controllers"},
+                    {"area", null},
+                    {"widgetZone", widgetZone}
+                };
+            }
+
+            if (widgetZone.Equals("Case"))
+            {
+                actionName = "Detail";
+                controllerName = "FieldWord";
+                routeValues = new RouteValueDictionary
+                {
+                    {"Namespaces", "Nop.Plugin.Teams.Aso.Controllers"},
+                    {"area", null},
+                    {"widgetZone", widgetZone}
+                };
+            }
         }
 
         public IList<string> GetWidgetZones()
         {
             //,"GetWidget_download" 
-            return new List<string>() { "GetWidget_linhvuc", "GetWidget_download_aso" };
+            return new List<string>() { "GetWidget_linhvuc", "GetWidget_download_aso","Archive","Case"};
         }
 
         public override void Install()

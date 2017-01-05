@@ -8,9 +8,16 @@
     //page class
     Html.AppendPageCssClassParts("html-contact-page");
 }
+@section Breadcrumb_line {
+    <div class="headtitle">
+        <div class="container_aso">
+            <h2 class="title">@T("Title.ContactUs")<h2>
+        </div>
+    </div>
+}
 <div class="page contact-page">
-    <div class="page-title">
-        <h1>@T("PageTitle.ContactUs")</h1>
+    <div class="page-title" id="ph-title">
+        <h1>@T("alert-contact") </h1>
     </div>
     <div class="page-body">
         @Html.Action("TopicBlock", "Topic", new { systemName = "ContactUs" })
@@ -33,32 +40,35 @@
                 }
                 <div class="fieldset">
                     <div class="form-fields">
-                        <div class="inputs">
+                        <div>
                             @Html.LabelFor(model => model.FullName)
-                            @Html.TextBoxFor(model => model.FullName, new { @class = "fullname", placeholder = T("ContactUs.FullName.Hint") })
-                            @Html.RequiredHint()
-                            @Html.ValidationMessageFor(model => model.FullName)
+                            @Html.RequiredHint() @Html.ValidationMessageFor(model => model.FullName)
+                            @Html.TextBoxFor(model => model.FullName, new { @class = "fullname form-control", placeholder ="" })
+                           
                         </div>
-                        <div class="inputs">
+                        <div>
                             @Html.LabelFor(model => model.Email)
-                            @Html.TextBoxFor(model => model.Email, new { @class = "email", placeholder = T("ContactUs.Email.Hint") })
                             @Html.RequiredHint()
                             @Html.ValidationMessageFor(model => model.Email)
+                            @Html.TextBoxFor(model => model.Email, new { @class = "email form-control" })
+                            
+                          
                         </div>
                         @if (Model.SubjectEnabled)
                         {
-                            <div class="inputs">
+                            <div>
                                 @Html.LabelFor(model => model.Subject)
-                                @Html.TextBoxFor(model => model.Subject, new { @class = "subject", placeholder = T("ContactUs.Subject.Hint") })
                                 @Html.RequiredHint()
                                 @Html.ValidationMessageFor(model => model.Subject)
+                                @Html.TextBoxFor(model => model.Subject, new { @class = "subject form-control" })
                             </div>
                         }
-                        <div class="inputs">
+                        <div>
                             @Html.LabelFor(model => model.Enquiry)
-                            @Html.TextAreaFor(model => model.Enquiry, new { @class = "enquiry", placeholder = T("ContactUs.Enquiry.Hint") })
                             @Html.RequiredHint()
                             @Html.ValidationMessageFor(model => model.Enquiry)
+                            @Html.TextAreaFor(model => model.Enquiry, new { @class = "enquiry form-control" })
+
                         </div>
                         @if (Model.DisplayCaptcha)
                         {
@@ -68,7 +78,7 @@
                         }
                     </div>
                 </div>
-                <div class="buttons">
+                <div class="buttons" id="page-detail-button">
                     <input type="submit" name="send-email" class="button-1 contact-us-button" value="@T("ContactUs.Button")" />
                 </div>
             }

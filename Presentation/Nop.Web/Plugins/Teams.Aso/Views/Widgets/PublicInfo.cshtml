@@ -2,9 +2,9 @@
 @model IEnumerable<FieldWorkRecord>
 <div class="container_aso">
     <h3 class="title_slider">
-        Lĩnh Vực Hoạt Động
+        @T("Tille-Case")
     </h3>
-    <div class="owl-carousel">
+    <div class="owl-carousel owl-carousel-news ">
         @foreach (var item in Model)
             {
             <div class="col-item">
@@ -14,7 +14,7 @@
                 <div class="info">
                     <span class="news-date">@item.Create_at.ToString("D") </span>
                     <h3>
-                        <a class="news-title" href="">@item.Title</a>
+                        <a class="news-title" href="case/detail/@item.Id">@item.Title</a>
                     </h3>
                     <div class="news-body">
                         @Html.Raw(item.Descaption)

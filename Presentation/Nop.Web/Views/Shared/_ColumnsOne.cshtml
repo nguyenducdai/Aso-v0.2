@@ -9,6 +9,13 @@
     }
 }
 
+@if (IsSectionDefined("Breadcrumb_line"))
+{
+    @section Breadcrumb_line {
+        @RenderSection("Breadcrumb_line",false)
+    }
+}
+
 @if (IsSectionDefined("Breadcrumb"))
 {
     @section Breadcrumb {
