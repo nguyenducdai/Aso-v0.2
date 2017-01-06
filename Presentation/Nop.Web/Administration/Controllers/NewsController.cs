@@ -204,26 +204,32 @@ namespace Nop.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                if (file != null)
-                {
                     var newsItem = model.ToEntity();
                     newsItem.StartDateUtc = model.StartDate;
                     newsItem.EndDateUtc = model.EndDate;
                     newsItem.CreatedOnUtc = DateTime.UtcNow;
-
-                    var fileName = Path.GetFileName(file.FileName);
-
-                    // move file to folder
-                    var path = Path.Combine(Server.MapPath("~/Content/Images/Thumbs/"), fileName);
-                    if (System.IO.File.Exists(path))
+                    var fileName = "";
+                    if (file != null)
                     {
-                        ViewBag.Error = " File ảnh đã tồn tại";
+                          fileName = Path.GetFileName(file.FileName);
+                        // move file to folder
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/Thumbs/"), fileName);
+                        if (System.IO.File.Exists(path))
+                        {
+                            ViewBag.Error = " File ảnh đã tồn tại";
+                        }
+                        else
+                        {
+                            file.SaveAs(path);
+                        }
+                         newsItem.Picture = file.FileName;
                     }
                     else
                     {
-                        file.SaveAs(path);
-                    }
-                    newsItem.Picture = file.FileName;
+                          fileName = "new_default_img.jpg";
+                          newsItem.Picture = fileName;
+                     }
+                    
                     _newsService.InsertNews(newsItem);
 
                     //search engine name
@@ -244,12 +250,7 @@ namespace Nop.Admin.Controllers
                     }
 
                     return RedirectToAction("List");
-                }else
-                {
-                    return RedirectToAction("Create");
-                }
-                
-
+    
             }
 
             //If we got this far, something failed, redisplay form

@@ -46,6 +46,7 @@ namespace Nop.Admin.Models.News
 
         [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Short")]
         [AllowHtml]
+        [StringLength(300, ErrorMessage = "Độ dài tối đa là 300 ký tự")]
         public string Short { get; set; }
 
         [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Full")]

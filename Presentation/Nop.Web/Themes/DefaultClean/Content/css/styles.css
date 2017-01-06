@@ -193,6 +193,8 @@ label, label + * {
 	font-weight: bold;
      color:#007FBA;
 }
+
+
 .page:after,
 .page-title:after,
 .page-body:after {
@@ -5556,6 +5558,7 @@ ul.img-product-detail li span{
 }
 
 
+
 /*** FOOTER ***/
 
 
@@ -6383,7 +6386,27 @@ ul.img-product-detail li span{
 }
 .header-menu > ul > li:first-child {
 	border-left: none;
+
 }
+.header-menu > ul > li a.is_active::before{
+    display:none ;
+}
+.header-menu > ul > li a.is_active::after
+{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 12px 16px 12px;
+    border-color: transparent transparent #F6F6F6 transparent;
+}
+
+
 .header-menu > ul > li > a {
 	display: block;
 	padding: 5px 10px;
@@ -6432,10 +6455,8 @@ ul.img-product-detail li span{
     border-color: transparent transparent #F6F6F6 transparent;
 }
 .fix{
-    position:relative;
-    bottom:-70px;
+   margin-top:89px;
 }
-
 .headtitle {
     background-image: url("../images/headtitle-bg.jpg");
     background-size: cover;
@@ -6700,12 +6721,24 @@ ul.img-product-detail li span{
 	min-height: 200px;
 }
 .login-page .returning-wrapper {
-	float: right;
-	width: 49%;
+     margin:100px auto;
+	width: 35%;
+
 }
+ /*.login-page{
+    background-color: rgba(0, 127, 186, 0.6);
+}*/
+
+
+
+#form-login-admin form {
+    background:#f6f6f6;
+    padding:30px 10px;
+    border-radius:7px;
+}
+
 .login-page .returning-wrapper .form-fields {
 	min-height: 200px;
-	padding: 30px 0 0;
 }
 .login-page .returning-wrapper .inputs label {
 	width: 110px;
@@ -7224,6 +7257,7 @@ ul.img-product-detail li span{
     font-weight: bold;
     text-transform:capitalize
 }
+.product-editor-settings{display:none}
 .title_slider{
     font-size: 2.2em;
     padding: 0 0 5px;
@@ -7273,3 +7307,12 @@ ul.img-product-detail li span{
 .owl-carousel{
     margin: 20px 0;
 }
+
+.goog-te-gadget-simple img {display:none}
+.goog-te-gadget-simple ,.goog-te-gadget-simple .goog-te-menu-value span{border:0 !important}
+.goog-te-gadget-simple .goog-te-menu-value span{
+    color:#777 !important;
+    vertical-align:top !important;
+}
+.master-wrapper-page{
+    border-top:1px solid #007FBA;

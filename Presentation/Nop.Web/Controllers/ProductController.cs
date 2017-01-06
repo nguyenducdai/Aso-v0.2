@@ -211,6 +211,12 @@ namespace Nop.Web.Controllers
                 FullDescription = product.GetLocalized(x => x.FullDescription),
                 Applications = product.GetLocalized(x => x.Applications),
                 Specifications = product.GetLocalized(x => x.Specifications),
+                Tab06 = product.GetLocalized(x => x.Tab06),
+                Tab07 = product.GetLocalized(x => x.Tab07),
+                Tab08 = product.GetLocalized(x => x.Tab08),
+                Tab09 = product.GetLocalized(x => x.Tab09),
+                Tab10 = product.GetLocalized(x => x.Tab10),
+
                 MetaKeywords = product.GetLocalized(x => x.MetaKeywords),
                 MetaDescription = product.GetLocalized(x => x.MetaDescription),
                 MetaTitle = product.GetLocalized(x => x.MetaTitle),

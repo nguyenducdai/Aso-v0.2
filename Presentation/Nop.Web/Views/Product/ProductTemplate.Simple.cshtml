@@ -54,7 +54,7 @@
 @section Breadcrumb_line {
     <div class="headtitle">
         <div class="container_aso">
-            <h2 class="title">@Model.Name<h2>
+            <h2 class="title">@Model.Name</h2>
         </div>
     </div>
 }
@@ -94,11 +94,17 @@
 
                     <div class="well tabsdt" id="tab-product">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_detail1" data-toggle="tab">Mô tả chi tiết</a></li>
-                            <li><a href="#tab_detail2" data-toggle="tab">Thông số kĩ thuật</a></li>
-                            <li><a href="#tab_detail3" data-toggle="tab">Hình ảnh</a></li>
-                            <li><a href="#tab_detail4" data-toggle="tab">Tài liệu</a></li>
-                            <li><a href="#tab_detail5" data-toggle="tab">Ứng dụng</a></li>
+                            @if (!String.IsNullOrEmpty(Model.FullDescription)){<li class="active"><a href="#tab_detail1" data-toggle="tab">@T("tab-1")</a></li>}
+                           @if (!String.IsNullOrEmpty(Model.Specifications)){ <li><a href="#tab_detail2" data-toggle="tab">@T("Tab-2")</a></li>}
+                           @if (Model.PictureModels != null) { <li><a href="#tab_detail3" data-toggle="tab">@T("Tab-3")</a></li>}
+                            @if (Model.HasSampleDownload) { <li><a href="#tab_detail4" data-toggle="tab">@T("Tab-4")</a></li>}
+                            @if (!String.IsNullOrEmpty(Model.Applications)) {<li><a href="#tab_detail5" data-toggle="tab">@T("Tab-5")</a></li>}
+                            @if (!String.IsNullOrEmpty(Model.Tab06)) { <li><a href="#tab_detail6" data-toggle="tab">@T("Tab-6")</a></li>}
+                            @if (!String.IsNullOrEmpty(Model.Tab07)){ <li><a href="#tab_detail7" data-toggle="tab">@T("Tab-7")</a></li> }
+                            @if (!String.IsNullOrEmpty(Model.Tab08)){<li><a href="#tab_detail8" data-toggle="tab">@T("Tab-8")</a></li>}
+                            @if (!String.IsNullOrEmpty(Model.Tab09)){<li><a href="#tab_detail9" data-toggle="tab">@T("Tab-9")</a></li>}
+                            @if (!String.IsNullOrEmpty(Model.Tab10)){<li><a href="#tab_detail10" data-toggle="tab">@T("Tab-10")</a></li>}
+                          
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane active in" id="tab_detail1">
@@ -145,6 +151,52 @@
                                     </div>
                                 }
                             </div>
+
+                            <div class="tab-pane fade" id="tab_detail6">
+                                @if (!String.IsNullOrEmpty(Model.Tab06))
+                                {
+                                    <div class="full-description" itemprop="fieldwork">
+                                        @Html.Raw(Model.Tab06)
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="tab-pane fade" id="tab_detail7">
+                                @if (!String.IsNullOrEmpty(Model.Tab07))
+                                {
+                                    <div class="full-description" itemprop="fieldwork">
+                                        @Html.Raw(Model.Tab07)
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="tab-pane fade" id="tab_detail8">
+                                @if (!String.IsNullOrEmpty(Model.Tab08))
+                                {
+                                    <div class="full-description" itemprop="fieldwork">
+                                        @Html.Raw(Model.Tab08)
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="tab-pane fade" id="tab_detail9">
+                                @if (!String.IsNullOrEmpty(Model.Tab09))
+                                {
+                                    <div class="full-description" itemprop="fieldwork">
+                                        @Html.Raw(Model.Tab09)
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="tab_detail10">
+                                @if (!String.IsNullOrEmpty(Model.Tab10))
+                                {
+                                    <div class="full-description" itemprop="fieldwork">
+                                        @Html.Raw(Model.Tab10)
+                                    </div>
+                                }
+                            </div>
+
+
                         </div>
                     </div>
                     

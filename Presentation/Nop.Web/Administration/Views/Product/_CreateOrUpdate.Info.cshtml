@@ -70,7 +70,7 @@
     function toggleProductType() {
         var selectedProductTypeId = $("#@Html.FieldIdFor(model => model.ProductTypeId)").val();
         if (!selectedProductTypeId || selectedProductTypeId == @(((int) ProductType.SimpleProduct).ToString())) {
-            $('#group-prices').show();
+        $('#group-prices').show();
         $('#tier-prices').show();
         $('#group-required-other-products').show();
         $('#group-giftcard').show();
@@ -554,7 +554,7 @@
                         </div>
                     </div>
                             ))
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <div class="col-md-3">
                             @Html.NopLabelFor(model => model.Sku)
                         </div>
@@ -562,7 +562,7 @@
                             @Html.NopEditorFor(model => model.Sku)
                             @Html.ValidationMessageFor(model => model.Sku)
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group @(Model.ProductEditorSettingsModel.Published ? null : "advanced-setting")">
                         <div class="col-md-3">
                             @Html.NopLabelFor(model => model.Published)
@@ -752,7 +752,7 @@
                             @Html.ValidationMessageFor(model => model.IsDownload)
                         </div>
                     </div>
-                    <div class="form-group" id="pnlDownloadFile">
+                    <div class="form-group" id="pnlDownloadFile" >
                         <div class="col-md-3">
                             @Html.NopLabelFor(model => model.DownloadId)
                         </div>
@@ -912,7 +912,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default" id="group-prices">
+            @*<div class="panel panel-default" id="group-prices">
                 <div class="panel-heading">
                     @T("Admin.Catalog.Products.Prices")
                 </div>
@@ -1144,7 +1144,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="panel panel-default @(Model.ProductEditorSettingsModel.TierPrices ? null : "advanced-setting")" id="tier-prices">
                 <div class="panel-heading">
                     @T("Admin.Catalog.Products.TierPrices")
@@ -1500,7 +1500,7 @@
                     </div>
                 }
             </div>
-            <div class="panel panel-default no-margin" id="group-inventory">
+            @*<div class="panel panel-default no-margin" id="group-inventory">
                 <div class="panel-heading">
                     @T("Admin.Catalog.Products.Inventory")
                 </div>
@@ -1731,8 +1731,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-default" id="group-shipping">
+            </div>*@
+            @*<div class="panel panel-default" id="group-shipping">
                 <div class="panel-heading">
                     @T("Admin.Catalog.Products.Shipping")
                 </div>
@@ -1819,7 +1819,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @T("Admin.Catalog.Products.Mappings")
@@ -2018,6 +2018,68 @@
                     </div>
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @T("Admin.Products.Tab")
+                </div>
+             
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @*@Html.NopLabelFor(model => model.Tab06)*@
+                                @T("Tab-6")
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopTextAreaFor(x => x.Tab06)
+                                @Html.ValidationMessageFor(model => model.Tab06)
+                            </div>
+                          </div> 
+                        
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @*@Html.NopLabelFor(model => model.Tab06)*@
+                                @T("Tab-7")
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopTextAreaFor(x => x.Tab07)
+                                @Html.ValidationMessageFor(model => model.Tab07)
+                            </div>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @*@Html.NopLabelFor(model => model.Tab06)*@
+                                @T("Tab-8")
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopTextAreaFor(x => x.Tab08)
+                                @Html.ValidationMessageFor(model => model.Tab08)
+                            </div>
+                        </div>  
+                        
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @*@Html.NopLabelFor(model => model.Tab06)*@
+                                @T("Tab-9")
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopTextAreaFor(x => x.Tab09)
+                                @Html.ValidationMessageFor(model => model.Tab09)
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @*@Html.NopLabelFor(model => model.Tab06)*@
+                                @T("Tab-10")
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopTextAreaFor(x => x.Tab10)
+                                @Html.ValidationMessageFor(model => model.Tab10)
+                            </div>
+                        </div>                   
+                        </div>
+               
+            </div>
             <div class="panel panel-default @(Model.ProductEditorSettingsModel.RelatedProducts ? null : "advanced-setting")">
                 <div class="panel-heading">
                     @T("Admin.Catalog.Products.RelatedProducts")
@@ -2152,6 +2214,7 @@
                     </div>
                 }
             </div>
+
             <div class="panel panel-default @(Model.ProductEditorSettingsModel.CrossSellsProducts ? null : "advanced-setting")">
                 <div class="panel-heading">
                     @T("Admin.Catalog.Products.CrossSells")

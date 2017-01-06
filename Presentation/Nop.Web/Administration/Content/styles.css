@@ -21,6 +21,22 @@ ul, ol {
 .alert {
     margin-bottom: 0;
 }
+#document-create div {
+    margin:10px 0;
+}
+#aso-list .list-group-item {
+    border:0 !important;
+}
+
+#aso-main {
+    padding:0 15px !important;
+}
+aso-list .list-group-item:first-child{
+    border-top-right-radius:0 !important;
+    border-top-left-radius:0 !important;
+}
+
+#product-editor-settings{display:none}
 .alert-success {
     border-color: #02A91E;
 }

@@ -11,12 +11,14 @@ using System.Web.Mvc;
 using System.Web;
 using System.IO;
 using Nop.Web.Framework.Kendoui;
+using System.Web.Routing;
 
 namespace Nop.Plugin.Teams.Aso.Controllers
 {
     public class DocumentAsoController : BasePluginController
     {
         private IRepository<DownLoadRecord> _iRepository;
+
 
         public PluginDescriptor PluginDescriptor
         {
@@ -70,11 +72,12 @@ namespace Nop.Plugin.Teams.Aso.Controllers
                 var path = Path.Combine(Server.MapPath("~/Content/FIleDownload/"), d.File);
                 var pathImg = Path.Combine(Server.MapPath("~/Content/FIleDownload/img/"), d.Image);
                 this.removeFile(path);
-                this.removeFile(pathImg);
+                //this.removeFile(pathImg);
                 _iRepository.Delete(d);
                 ViewBag.Alert = "Xóa thành công";
             }
-            return RedirectToAction("/aso/index");
+            return RedirectToAction("Index", new RouteValueDictionary(
+            new { controller = "FieldWord", action = "Index" }));
         } 
 
         private void removeFile(string path)
@@ -86,45 +89,62 @@ namespace Nop.Plugin.Teams.Aso.Controllers
         }
 
         [HttpPost]
-        public ActionResult DoCreateDocument(DownLoadRecord downLoad , HttpPostedFileBase file , HttpPostedFileBase img)
+        public ActionResult DoCreateDocument(DownLoadRecord downLoad , HttpPostedFileBase File, HttpPostedFileBase Image)
         {
             DownLoadRecord dl = new DownLoadRecord();
             if (ModelState.IsValid)
             {
-                if (file != null)
+                if (File != null)
                 {
-                    var fileDoc = Path.GetFileName(file.FileName);
-                    var fileImg = Path.GetFileName(img.FileName);
+                    var fileDoc = Path.GetFileName(File.FileName);
+                    var fileImg = Path.GetFileName(Image.FileName);
 
+                    string extension = Path.GetExtension(File.FileName);
+
+                    var d = DateTime.Now.ToString("ddMMyyyyhhmmss_aso");
                     // move file to folder
-                    var path = Path.Combine(Server.MapPath("~/Content/FIleDownload/"), fileDoc);
+                    var path = Path.Combine(Server.MapPath("~/Content/FIleDownload/"),fileDoc.Replace(fileDoc,d)+extension);
                     var pathImg = Path.Combine(Server.MapPath("~/Content/FIleDownload/img/"), fileImg);
                     if (!System.IO.File.Exists(path))
                     {
-                        file.SaveAs(path);
+                        File.SaveAs(path);
                     }
 
                     if (!System.IO.File.Exists(pathImg))
                     {
-                        img.SaveAs(pathImg);
+                        Image.SaveAs(pathImg);
                     }
                     var date = DateTime.Now.ToString("yyyy-MM-dd");
                     dl.Create_at = Convert.ToDateTime(date);
-                    dl.Image = img.FileName;
-                    dl.File = file.FileName;
+                    dl.Image = Image.FileName;
+                    dl.File = fileDoc.Replace(fileDoc, d) + extension;
                     dl.Title = downLoad.Title;
                     _iRepository.Insert(dl);
                     ViewBag.Alert = "Tải tài liệu lên thành công";
                 }
             }
-            return RedirectToAction("CreateDocument");
+            return RedirectToAction("Index", new RouteValueDictionary(
+             new { controller = "FieldWord", action = "Index" }));
         }
 
+        public void RenameUploadFile(HttpPostedFileBase file, Int32 counter = 0)
+        {
+        
+        }
 
         public ActionResult ArchiveDocument()
         {
             var model = _iRepository.Table.ToList();
             return View("~/Plugins/Teams.Aso/Views/Widgets/PageAchiverDownloand.cshtml",model);
+        }
+
+        public FileResult DownLoad(int id)
+        {
+            var model = _iRepository.GetById(id);
+            var path = Path.Combine(Server.MapPath("~/Content/FIleDownload/"), model.File);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(@path);
+            string fileName = model.File;
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
     }
 }

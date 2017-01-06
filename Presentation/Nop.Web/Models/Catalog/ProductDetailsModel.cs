@@ -44,6 +44,11 @@ namespace Nop.Web.Models.Catalog
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
         public string SeName { get; set; }
+        public string Tab06 { get; set; }
+        public string Tab07 { get; set; }
+        public string Tab08 { get; set; }
+        public string Tab09 { get; set; }
+        public string Tab10 { get; set; }
 
         public ProductType ProductType { get; set; }
 

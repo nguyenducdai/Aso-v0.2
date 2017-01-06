@@ -115,6 +115,14 @@ namespace Nop.Plugin.Teams.Aso
             new[] { "Nop.Plugin.Teams.Aso.Controllers" }
           );
 
+
+            routes.MapRoute("Nop.Plugin.Teams.Aso.Download",
+            "download/do/{id}",
+            new { controller = "DocumentAso", action = "Download" },
+             new { id = @"\d+" },
+            new[] { "Nop.Plugin.Teams.Aso.Controllers" }
+          );
+
         }
     }
 }

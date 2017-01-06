@@ -63,6 +63,11 @@ namespace Nop.Core.Domain.Catalog
         /// Gets or sets the field work
         /// </summary>
         public string Specifications { get; set; }
+        public string Tab06 { get; set; }
+        public string Tab07 { get; set; }
+        public string Tab08 { get; set; }
+        public string Tab09 { get; set; }
+        public string Tab10 { get; set; }
 
         /// <summary>
         /// Gets or sets the admin comment

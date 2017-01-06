@@ -95,6 +95,27 @@ namespace Nop.Admin.Models.Catalog
         [AllowHtml]
         public string Specifications { get; set; }
 
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Tab06")]
+        [AllowHtml]
+        public string Tab06 { get; set; }
+
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Tab07")]
+        [AllowHtml]
+        public string Tab07 { get; set; }
+
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Tab08")]
+        [AllowHtml]
+        public string Tab08 { get; set; }
+
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Tab09")]
+        [AllowHtml]
+        public string Tab09 { get; set; }
+
+        [NopResourceDisplayName("Admin.Catalog.Products.Fields.Tab10")]
+        [AllowHtml]
+        public string Tab10 { get; set; }
+
+
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.AdminComment")]
         [AllowHtml]
         public string AdminComment { get; set; }

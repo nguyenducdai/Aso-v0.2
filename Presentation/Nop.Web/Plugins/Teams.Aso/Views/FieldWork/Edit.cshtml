@@ -11,9 +11,9 @@
                         <h2>Field Work</h2>
                     </div>
                         <div class="pull-right">
-                            <a href="/Admin/Discount/Create" class="btn bg-blue">
+                            <a href="/aso/index" class="btn bg-blue">
                                 <i class="fa fa-files-o"></i>
-                                Close
+                                Đóng
                             </a>
                         </div>
                     </div>
@@ -38,14 +38,17 @@
 
                                     @Html.LabelFor(model => model.Title, new { @class = "control-label" })
                                     @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Title)
                                 </div>
                                 <div>
                                     @Html.LabelFor(model => model.Descaption, new { @class = "control-label" })
                                     @Html.TextAreaFor(model => model.Descaption, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Descaption)
                                 </div>
                                 <div>
                                     @Html.LabelFor(model => model.Content, new { @class = "control-label" })
                                     @Html.TextAreaFor(model => model.Content, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Content)
                                 </div>
                                 <div>
                                     @Html.LabelFor(model => model.Image, new { @class = "control-label" })

@@ -1000,6 +1000,9 @@
     <Content Include="Views\Common\Logo.cshtml" />
     <Content Include="Views\Common\Page.cshtml" />
     <Content Include="Views\PostType\ListPost.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\FIleDownload\img\" />

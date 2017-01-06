@@ -1273,6 +1273,12 @@ namespace Nop.Admin.Controllers
 
                 product.Applications = model.Applications;
                 product.Specifications = model.Specifications;
+                product.Tab06 = model.Tab06;
+                product.Tab07 = model.Tab07;
+                product.Tab08 = model.Tab08;
+                product.Tab09 = model.Tab09;
+                product.Tab10 = model.Tab10;
+
 
                 product.UpdatedOnUtc = DateTime.UtcNow;
                 _productService.UpdateProduct(product);

@@ -9,7 +9,8 @@
     <div class="form-horizontal">
         <div class="content-header clearfix">
             <h1 class="pull-left">
-                Quản lý lĩnh vực sản xuất
+                Aso Company
+
             </h1>
             <div class="pull-right">
                 <a href="/FieldWork/Create" class="btn bg-blue">
@@ -17,104 +18,120 @@
                     Thêm Mới
                 </a>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success" aria-expanded="false">
+                    <a href="/admin" class="btn btn-success" aria-expanded="false">
                         <span class="sr-only">&nbsp;</span>
                         Đóng
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <div class="panel-group">
+                    <div class="panel panel-default panel-search">
+                        <div class="panel-body" style="min-height:301px" id="aso-main">
+                            <div class="row">
+                                <div class="list-group" id="aso-list">
+                                    <a href="#" class="list-group-item disabled">Tùy Chọn</a>
+                                    <a href="/aso/index" class="list-group-item">Tài Liệu tải lên</a>
+                                    <a href="/aso/case" class="list-group-item">Lĩnh Vực Hoạt Động</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
                 <div class="panel-group">
                     <div class="panel panel-default panel-search">
                         <div class="panel-body">
-                            <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <div class="label-wrapper"><label class="control-label" for="SearchCategoryName" title="">Tìm Kiếm</label><div class="ico-help" title="A category name."><i class="fa fa-question-circle"></i></div></div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input class="form-control text-box single-line" id="SearchCategoryName" name="SearchCategoryName" type="text" value="">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" id="search-categories" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
+                            <div class="panel panel-default panel-search">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <div class="label-wrapper"><label class="control-label" for="SearchCategoryName" title="">Tìm Kiếm</label><div class="ico-help" title="A category name."><i class="fa fa-question-circle"></i></div></div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="form-control text-box single-line" id="SearchCategoryName" name="SearchCategoryName" type="text" value="">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" id="search-categories" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>        
-                        <div class="panel panel-default panel-search">
-                            <div class="panel-body">
-                                <div id="products-grid"></div>
-                                <script>
-                                    $(document).ready(function () {
-                                        $("#products-grid").kendoGrid({
-                                            dataSource: {
-                                                type: "json",
-                                                transport: {
-                                                    read: {
-                                                        url: "@Html.Raw(Url.Action("List", "FieldWord"))",
-                                                        type: "POST",
-                                                        dataType: "json"
-                                                    }
+                            <div class="panel panel-default panel-search">
+                                <div class="panel-body">
+                                    <div id="products-grid"></div>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#products-grid").kendoGrid({
+                                                dataSource: {
+                                                    type: "json",
+                                                    transport: {
+                                                        read: {
+                                                            url: "@Html.Raw(Url.Action("List", "FieldWord"))",
+                                                            type: "POST",
+                                                            dataType: "json"
+                                                        }
+                                                    },
+                                                    schema: {
+                                                        data: "Data",
+                                                        total: "Total",
+                                                        errors: "Errors"
+                                                    },
+                                                    error: function (e) {
+                                                        display_kendoui_grid_error(e);
+                                                        // Cancel the changes
+                                                        this.cancelChanges();
+                                                    },
+                                                    serverPaging: true,
+                                                    serverFiltering: true,
+                                                    serverSorting: true
                                                 },
-                                                schema: {
-                                                    data: "Data",
-                                                    total: "Total",
-                                                    errors: "Errors"
-                                                },
-                                                error: function (e) {
-                                                    display_kendoui_grid_error(e);
-                                                    // Cancel the changes
-                                                    this.cancelChanges();
-                                                },
-                                                serverPaging: true,
-                                                serverFiltering: true,
-                                                serverSorting: true
-                                            },
-                                            columns: [
-                                                  {
-                                                      field: "Image",
-                                                      title: "Hình Anh",
-                                                      width: 100,
-                                                      template: '<img src ="@Url.Content("~/Content/Images/Thumbs/")#=Image#" style="height:100px"/>',
-                                                  },
-                                                {
-                                                    field: "Title",
-                                                    title: "Tiêu Đề",
-                                                    width: 200
-                                                },
-                                                {
-                                                    field: "Descaption",
-                                                    title: "Mô Tả",
-                                                    width: 300
-                                                }, {
-                                                    field: "Create_at",
-                                                    title: "Ngày Tạo",
-                                                    type: "date",
-                                                    format: "{0:d}",
-                                                    width: 80
-                                                }, {
-                                                    field: "Id",
-                                                    title: "Sửa",
-                                                    width: 50,
-                                                    template: '<a href="/FieldWork/Update/#=Id#">Sửa</a>'
-                                                },
-                                                 {
-                                                     field: "Id",
-                                                     title: "Xóa",
-                                                     width: 50,
-                                                     template: '<a href="/FieldWork/Del/#=Id#">Xóa</a>'
-                                                 },
-                                            ]
+                                                columns: [
+                                                      {
+                                                          field: "Image",
+                                                          title: "Hình Anh",
+                                                          width: 100,
+                                                          template: '<img src ="@Url.Content("~/Content/Images/Thumbs/")#=Image#" style="height:100px"/>',
+                                                      },
+                                                    {
+                                                        field: "Title",
+                                                        title: "Tiêu Đề",
+                                                        width: 200
+                                                    },
+                                                   {
+                                                        field: "Create_at",
+                                                        title: "Ngày Tạo",
+                                                        type: "date",
+                                                        format: "{0:d}",
+                                                        width: 80
+                                                    }, {
+                                                        field: "Id",
+                                                        title: "Sửa",
+                                                        width: 50,
+                                                        template: '<a href="/FieldWork/Update/#=Id#">Sửa</a>'
+                                                    },
+                                                     {
+                                                         field: "Id",
+                                                         title: "Xóa",
+                                                         width: 50,
+                                                         template: '<a href="/FieldWork/Del/#=Id#">Xóa</a>'
+                                                     },
+                                                ]
+                                            });
                                         });
-                                    });
-                                </script>
+                                    </script>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+
+    </div>
+</div>

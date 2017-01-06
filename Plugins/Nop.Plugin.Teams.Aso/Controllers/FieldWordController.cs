@@ -36,6 +36,10 @@ namespace Nop.Plugin.Teams.Aso.Controllers
             _iRepository = iRepository;
         }
 
+        public FieldWordController()
+        {
+           
+        }
         public ActionResult Index()
         {
             return View("~/Plugins/Teams.Aso/Views/FieldWork/Index.cshtml");
@@ -66,13 +70,13 @@ namespace Nop.Plugin.Teams.Aso.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddPost(FieldWorkRecord fwRecord, HttpPostedFileBase file)
+        public ActionResult AddPost(FieldWorkRecord fwRecord, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
-                if (file != null)
+                if (Image != null)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
+                    var fileName = Path.GetFileName(Image.FileName);
 
                     // move file to folder
                     var path = Path.Combine(Server.MapPath("~/Content/Images/Thumbs/"), fileName);
@@ -82,11 +86,11 @@ namespace Nop.Plugin.Teams.Aso.Controllers
                     }
                     else
                     {
-                        file.SaveAs(path);
+                        Image.SaveAs(path);
                     }
                     var date = DateTime.Now.ToString("yyyy-MM-dd");
                     fwRecord.Create_at = Convert.ToDateTime(date);
-                    fwRecord.Image = file.FileName;
+                    fwRecord.Image = Image.FileName;
                     _iRepository.Insert(fwRecord);
                     return RedirectToAction("Manage");
                 }

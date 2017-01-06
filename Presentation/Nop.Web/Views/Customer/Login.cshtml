@@ -2,115 +2,168 @@
 @using Nop.Web.Models.Customer;
 @using Nop.Core;
 @using Nop.Core.Infrastructure;
-@{
-    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
-
-    //title
-    Html.AddTitleParts(T("PageTitle.Login").Text);
-    //page class
-    Html.AppendPageCssClassParts("html-login-page");
-
-    //register URL with return URL (if specified)
-    var registerUrl = Url.RouteUrl("Register");
-    if (!String.IsNullOrEmpty(this.Context.Request.QueryString["returnUrl"]))
-    {
-        var webHelper = EngineContext.Current.Resolve<IWebHelper>();
-        registerUrl = webHelper.ModifyQueryString(registerUrl, "returnurl=" + HttpUtility.UrlEncode(this.Context.Request.QueryString["returnUrl"]), null);
-    }
+@{ 
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
 }
-<div class="page login-page">
-    <div class="page-title">
-        <h1>@T("Account.Login.Welcome")</h1>
-    </div>
-    @Html.Partial("_ExternalAuthentication.AssociateMessage")
-    @Html.Partial("_ExternalAuthentication.Errors")
-    <div class="page-body">
-        <div class="customer-blocks">
-            @if (Model.CheckoutAsGuest)
-            {
-                <div class="new-wrapper checkout-as-guest-or-register-block">
-                    <div class="title">
-                        <strong>@T("Account.Login.CheckoutAsGuestOrRegister")</strong>
-                    </div>
-                    <div class="text">
-                        @Html.Action("TopicBlock", "Topic", new { systemName = "CheckoutAsGuestOrRegister" })
-                    </div>
-                    <div class="buttons">
-                        <input type="button" class="button-1 checkout-as-guest-button" onclick="location.href='@Url.RouteUrl("Checkout")'" value="@T("Account.Login.CheckoutAsGuest")" />
-                        <input type="button" class="button-1 register-button" onclick="location.href='@registerUrl'" value="@T("Account.Register")" />
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="new-wrapper register-block">
-                    <div class="title">
-                        <strong>@T("Account.Login.NewCustomer")</strong>
-                    </div>
-                    <div class="text">
-                        @T("Account.Login.NewCustomerText")
-                    </div>
-                    <div class="buttons">
-                        <input type="button" class="button-1 register-button" onclick="location.href='@registerUrl'" value="@T("Account.Register")" />
-                    </div>
-                </div>
-            }
-            <div class="returning-wrapper fieldset">
-                @using (Html.BeginForm())
-                {
-                    var validationSummary = Html.ValidationSummary(true, T("Account.Login.Unsuccessful").Text);
-                    <div class="title">
-                        <strong>@T("Account.Login.ReturningCustomer")</strong>
-                    </div>
-                    if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
-                    {
-                        <div class="message-error">@validationSummary</div>
-                    }
-                    <div class="form-fields">
-                        @if (Model.UsernamesEnabled)
-                        {
-                            <div class="inputs">
-                                @Html.LabelFor(m => m.Username, new { }, ":")
-                                @Html.TextBoxFor(m => m.Username, new { @class = "username", autofocus = "autofocus" })
-                                @Html.ValidationMessageFor(m => m.Username)
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="inputs">
-                                @Html.LabelFor(m => m.Email, new { }, ":")
-                                @Html.TextBoxFor(m => m.Email, new { @class = "email", autofocus = "autofocus" })
-                                @Html.ValidationMessageFor(m => m.Email)
-                            </div>
-                        }
-                        <div class="inputs">
-                            @Html.LabelFor(m => m.Password, new { }, ":")
-                            @Html.PasswordFor(m => m.Password, new { @class = "password" })
-                            @Html.ValidationMessageFor(m => m.Password)
-                        </div>
-                        <div class="inputs reversed">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                            <span class="forgot-password">
-                                @Html.RouteLink(T("Account.Login.ForgotPassword").Text, "PasswordRecovery")
-                            </span>
-                        </div>
-                        @if (Model.DisplayCaptcha)
-                        {
-                            <div class="captcha-box">
-                                @Html.Raw(Html.GenerateCaptcha())
-                            </div>
-                        }
-                    </div>
-                    <div class="buttons">
-                        <input class="button-1 login-button" type="submit" value="@T("Account.Login.LoginButton")" />
-                    </div>
-                }
+<style>
+
+#form-login-admin-back{
+    background: rgba(0, 127, 186, 0.6) !important;
+}
+.login {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+/* Reset top and bottom margins from certain elements */
+.login-header,
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* The triangle form is achieved by a CSS hack */
+.login-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #28d;
+  padding:0 !important;
+}
+
+.login-header {
+  background: #28d;
+  padding: 20px;
+  font-size: 1.1em;
+  font-weight: normal;
+  text-align: center;
+     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  color: #fff;
+}
+
+.login form{
+  background: #ebebeb;
+  padding: 12px;
+}
+
+/* Every row inside .login-container is defined with p tags */
+.login p {
+  padding: 12px;
+}
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+.login div{
+    padding:12px;
+}
+.login input[type="text"],
+.login input[type="password"] {
+    height: auto !important;
+  background: #fff !important;
+  border-color: #bbb !important;
+  color: #555 !important;
+}
+
+/* Text fields' focus effect */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: #888;
+}
+
+.login input[type="submit"] {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+.login input[type="submit"]:focus {
+  border-color: #05a;
+}
+
+.remember input[type="checkbox"] {
+    width:auto;
+    float:left;    
+        margin-right: 10px; 
+}
+#text-header {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    top: 18px;
+    text-TRAnsform: uppercase;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    font-size:33px;
+}
+</style>
+ <div class="login">
+     <h2 id="text-header"> Aso Company</h2>
+    <div class="login-triangle "></div>
+    <h2 class="login-header">Đăng nhập để truy cập vào trang quản trị</h2>
+@using (Html.BeginForm())
+{
+    var validationSummary = Html.ValidationSummary(true, T("Account.Login.Unsuccessful").Text);
+
+    if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+    {
+        <div class="message-error">@validationSummary</div>
+    }
+    <div>
+        @if (Model.UsernamesEnabled)
+        {
+            <div>
+                @Html.TextBoxFor(m => m.Username, new { @class = "username", autofocus = "autofocus", placeholder = "nhập email hoặc tên đằng nhập" })
+                @Html.ValidationMessageFor(m => m.Username)
             </div>
+        }
+        else
+        {
+            <div>
+                @Html.TextBoxFor(m => m.Email, new { @class = "email", autofocus = "autofocus" ,placeholder = "nhập email hoặc tên đằng nhập" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        }
+        <div>
+            @Html.PasswordFor(m => m.Password, new { @class = "password",placeholder="Nhập mật khẩu" })
+            @Html.ValidationMessageFor(m => m.Password)
         </div>
-        <div class="external-authentication">
-            @Html.Action("ExternalMethods", "ExternalAuthentication")
+        <div class="remember">
+            <span>Nhớ Mật Khẩu | </span>
+            @Html.CheckBoxFor(m => m.RememberMe)
+            <span class="forgot-password">
+                @Html.RouteLink(T("Account.Login.ForgotPassword").Text, "PasswordRecovery")
+            </span>
+          
         </div>
-        @Html.Action("TopicBlock", "Topic", new { systemName = "LoginRegistrationInfo" })
+        @if (Model.DisplayCaptcha)
+        {
+            <div class="captcha-box">
+                @Html.Raw(Html.GenerateCaptcha())
+            </div>
+        }
+            <input class="button-1 login-button" type="submit" value="@T("Account.Login.LoginButton")" />
+
     </div>
-</div>
+}
+     <div class="external-authentication">
+         @Html.Action("ExternalMethods", "ExternalAuthentication")
+     </div>
+     @Html.Action("TopicBlock", "Topic", new { systemName = "LoginRegistrationInfo" })
+    </div>

@@ -10,15 +10,11 @@
 
             </h1>
             <div class="pull-right">
-                <a href="/download/create" class="btn bg-blue">
-                    <i class="fa fa-plus-square"></i>
-                    Thêm Mới Tài Liệu
-                </a>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success" aria-expanded="false">
+                    <a href="/aso/index" class="btn btn-success" aria-expanded="false">
                         <span class="sr-only">&nbsp;</span>
                         Đóng
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -30,7 +26,7 @@
                             <div class="row">
                                 <div class="list-group">
                                     <a href="#" class="list-group-item disabled">Tùy Chọn</a>
-                                    <a href="#" class="list-group-item">Tài Liệu tải lên</a>
+                                    <a href="/aso/index" class="list-group-item">Tài Liệu tải lên</a>
                                     <a href="/aso/case" class="list-group-item">Lĩnh Vực Hoạt Động</a>
                                 </div>
                             </div>
@@ -50,20 +46,23 @@
                                 </div>
 
                             }
-                            <form method="post" enctype="multipart/form-data" action="/download/d-create">
+                            <form method="post" enctype="multipart/form-data" action="/download/d-create" id="document-create">
                                 <div>
                                     <label>Tên Tài liệu</label>
                                     @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Title)
                                 </div>
 
                                 <div>
                                     <label>Hình ảnh đại diện</label>
-                                    <input type="file" name="img" class="form-control" />
+                                    @Html.TextBoxFor(m => m.Image,new { type = "file", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Image)
                                 </div>
 
                                 <div>
                                     <label>File đính kèm</label>
-                                    <input type="file" name="file" class="form-control" />
+                                    @Html.TextBoxFor(m => m.File, new { type = "file",@class ="form-control"})
+                                    @Html.ValidationMessageFor(model => model.File)
                                 </div>
 
                                 <div>
