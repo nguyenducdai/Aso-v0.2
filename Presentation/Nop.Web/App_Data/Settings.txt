@@ -1,2 +1,2 @@
 DataProvider: sqlserver
-DataConnectionString: Data Source=lanh-PC\SQLEXPRESS;Initial Catalog=Aso;Integrated Security=True;Persist Security Info=False
+DataConnectionString: Data Source=lanh-PC\SQLEXPRESS;Initial Catalog=ABX;Integrated Security=True;Persist Security Info=False
